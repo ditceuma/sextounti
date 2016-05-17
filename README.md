@@ -1,2 +1,2 @@
 # app-sextou-NTI
-app android para programação de eventos das sextas
+app para programação de eventos das sextas
