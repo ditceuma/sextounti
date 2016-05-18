@@ -10,6 +10,8 @@ import UIKit
 
 class Usuario {
     
+    //testando
+    
     let DEFAULT_PASSWORD = "e10adc3949ba59abbe56e057f20f883e"
     
     var codigo: Int = 0
