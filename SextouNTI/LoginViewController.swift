@@ -30,32 +30,31 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     
     func CarregaUsuario(object: NSDictionary) {
         
-        let usuarioLogin = Usuario()
         
-        usuarioLogin.codigo = object["codigo"] as! Int
-        usuarioLogin.nome = object["nome"] as! String
-        usuarioLogin.email = object["email"] as! String
-        usuarioLogin.matricula = object["matricula"] as! Int
-        
-     /*
-        if let perfil = object["perfil"] as? NSDictionary {
-            usuarioLogin.perfil.codigo = perfil["codigo"] as! Int
-            usuarioLogin.perfil.nome = perfil["nome"] as! String
-            usuarioLogin.perfil.descricao = perfil["descricao"] as! String
+            let usuarioLogin = Usuario()
             
-        }
-     */
-        
-        print("Codigo: \(usuarioLogin.codigo)")
-        print("Nome: \(usuarioLogin.nome)")
-        //print("Perfil: \(usuarioLogin.perfil.nome)")
-        //print("Descrição: \(usuarioLogin.perfil.descricao)")
-        
-        UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
-        
-        self.performSegueWithIdentifier("segueForTrilha", sender: self)
-
-
+            usuarioLogin.codigo = object["codigo"] as! Int
+            usuarioLogin.nome = object["nome"] as! String
+            usuarioLogin.email = object["email"] as! String
+            usuarioLogin.matricula = object["matricula"] as! Int
+            
+            /*
+             if let perfil = object["perfil"] as? NSDictionary {
+             usuarioLogin.perfil.codigo = perfil["codigo"] as! Int
+             usuarioLogin.perfil.nome = perfil["nome"] as! String
+             usuarioLogin.perfil.descricao = perfil["descricao"] as! String
+             
+             }
+             */
+            
+            print("Codigo: \(usuarioLogin.codigo)")
+            print("Nome: \(usuarioLogin.nome)")
+            //print("Perfil: \(usuarioLogin.perfil.nome)")
+            //print("Descrição: \(usuarioLogin.perfil.descricao)")
+            
+            UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
+            
+            self.performSegueWithIdentifier("segueForTrilha", sender: self)
         
     }
 
@@ -78,15 +77,32 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         
             let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario.email + "&password=" + usuario.senha)!
             
+            NSLog("url de conexão: \(url)")
+            
             NSOperationQueue.mainQueue().addOperationWithBlock {
                 let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
                     
                     if(error != nil) {
+                        
+                        Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
+                        
                         print("URL Error!!")
                     } else {
                         do {
                             let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                            self.CarregaUsuario(object)
+                            
+                        
+                            // Verifica se o serviço retornou uma mensagem de erro, já padronizada com código 13
+                            if(object.allValues.last?.description == "13"){
+                                
+                               // Alerta.alerta("Usuario/Senha inválidos! ", viewController: self)
+                                self.UserNameLabel.text = "Usuario/Senha inválidos!"
+                            }else{
+                            
+                                self.CarregaUsuario(object)
+                            }
+                            
+                            
                         } catch let jsonError as NSError {
                             print( "JSONError: \( jsonError.localizedDescription )")
                         }
@@ -95,6 +111,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
                 task.resume()
             }
         } else {
+           // Alerta.alerta("Usuario/Senha inválidos! ", viewController: self)
             UserNameLabel.text = "Usuario/Senha inválidos!"
         }
 
