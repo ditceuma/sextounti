@@ -11,6 +11,14 @@ import UIKit
 class TrilhaTableViewCell: UITableViewCell {
 
     
+    // MARK: Properties
+    @IBOutlet weak var tituloTrilhaLabel: UILabel!
+    
+    @IBOutlet weak var dataTrilhaLabel: UILabel!
+    
+    @IBOutlet weak var nomeUsuarioLabel: UILabel!
+    
+    @IBOutlet weak var photoImageView: UIImageView!
     
     
 }

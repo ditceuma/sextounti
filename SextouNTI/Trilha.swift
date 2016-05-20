@@ -10,18 +10,10 @@ import UIKit
 
 class Trilha {
     
-    var codigo: Int
-    var usuario:  Usuario
-    var titulo: String
-    var sobre: String
-    var data: String
+    var codigo: Int = 0
+    var nomeUsuario:  String = ""
+    var titulo: String = ""
+    var sobre: String = ""
+    var data: String = ""
     
-    
-    init(codigo: Int, usuario: Usuario, titulo: String, sobre: String, data: String) {
-        self.codigo = codigo
-        self.usuario = usuario
-        self.titulo = titulo
-        self.sobre = sobre
-        self.data = data 
-    }
 }

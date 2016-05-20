@@ -9,6 +9,8 @@
 import UIKit
 
 class TrilhaTableViewController: UITableViewController {
+    
+    var trilhasArray = [Trilha]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,21 +44,22 @@ class TrilhaTableViewController: UITableViewController {
         
         let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
         
-        
-        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-            
-            if(error != nil) {
-                print("URL Error!!")
-            } else {
-                do {
-                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    self.CarregaTrilhas(object)
-                } catch let jsonError as NSError {
-                    print( "JSONError: \( jsonError.localizedDescription )")
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+                
+                if(error != nil) {
+                    print("URL Error!!")
+                } else {
+                    do {
+                        let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                        self.CarregaTrilhas(object)
+                    } catch let jsonError as NSError {
+                        print( "JSONError: \( jsonError.localizedDescription )")
+                    }
                 }
             }
+            task.resume()
         }
-        task.resume()
 
 
 
@@ -72,44 +75,79 @@ class TrilhaTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return trilhasArray.count
+        
     }
     
     func CarregaTrilhas(trilhas: NSArray) {
         
         print(trilhas)
         
-        for trilha in trilhas {
+        for trilha:AnyObject in trilhas {
             
-            guard
-                let codigo = trilha["codigo"] as? Int,
-                let usuario = trilha["usuario"] as? [String: AnyObject],
-                let titulo = trilha["titulo"] as? String,
-                let sobre = trilha["sobre"] as? String,
-                let data = trilha["dataFormatada"] as? String else { print("Erro!!"); return }
+            let trilhaLocal = Trilha()
             
-            print("Codigo: \(codigo) ")
-            print("Nome: \(usuario["nome"]!)")
-            print("Email: \(usuario["email"]!)")
-            print("Sobre: \(sobre)")
+            let codigo = trilha["codigo"] as? Int
+            let usuario = trilha["usuario"] as? NSDictionary
+            let titulo = trilha["titulo"] as? String
+            let sobre = trilha["sobre"] as? String
+            let data = trilha["dataFormatada"] as? String
+            let perfil = usuario!["perfil"] as? NSDictionary
+            let nomeUsuario = usuario!["nome"]  as! String
+            
+            trilhaLocal.codigo = codigo!
+            trilhaLocal.titulo = titulo!
+            trilhaLocal.sobre = sobre!
+            trilhaLocal.data = data!
+            trilhaLocal.nomeUsuario = nomeUsuario
+            
+            /*
+             trilhaLocal.usuario.nome = usuario!["nome"] as! String
+             trilhaLocal.usuario.email = usuario!["email"] as! String
+             trilhaLocal.usuario.matricula = usuario!["matricula"] as! Int
+             trilhaLocal.usuario.perfil.codigo = perfil!["codigo"] as! Int
+             trilhaLocal.usuario.perfil.descricao = perfil!["descricao"] as! String
+             trilhaLocal.usuario.perfil.nome = perfil!["descricao"] as! String
+             */
+            
+            
+            trilhasArray.append(trilhaLocal)
+            
+            
+            print("Codigo: \(trilhaLocal.codigo) ")
+            print("Nome: \(trilhaLocal.nomeUsuario)")
+            //print("Email: \(trilhaLocal.usuario.email)")
+            print("Sobre: \(trilhaLocal.titulo)")
+            print("Data: \(trilhaLocal.data)")
         }
         
     }
 
-    /*
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "TrilhaTableViewCell"
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TrilhaTableViewCell
+        
+        // Fetches the appropriate trilha for the data source layout.
+        let trilha = trilhasArray[indexPath.row]
+        
+        
+        cell.tituloTrilhaLabel.text = trilha.titulo
+        cell.dataTrilhaLabel.text = trilha.data
+        cell.nomeUsuarioLabel.text = trilha.nomeUsuario
+        //cell.photoImageView.image = trilha.usuarioImage
+        
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

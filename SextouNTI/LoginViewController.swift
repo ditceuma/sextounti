@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         
         UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
         
-        //self.performSegueWithIdentifier("segueForTrilha", sender: self)
+        self.performSegueWithIdentifier("segueForTrilha", sender: self)
 
 
         
@@ -78,21 +78,22 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         
             let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario.email + "&password=" + usuario.senha)!
             
-            
-            let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-                
-                if(error != nil) {
-                    print("URL Error!!")
-                } else {
-                    do {
-                        let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                        self.CarregaUsuario(object)
-                    } catch let jsonError as NSError {
-                        print( "JSONError: \( jsonError.localizedDescription )")
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+                    
+                    if(error != nil) {
+                        print("URL Error!!")
+                    } else {
+                        do {
+                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                            self.CarregaUsuario(object)
+                        } catch let jsonError as NSError {
+                            print( "JSONError: \( jsonError.localizedDescription )")
+                        }
                     }
                 }
+                task.resume()
             }
-            task.resume()
         } else {
             UserNameLabel.text = "Usuario/Senha inválidos!"
         }
