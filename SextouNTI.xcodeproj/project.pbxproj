@@ -25,7 +25,7 @@
 		1F96EF071CD7A68300216741 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96EF061CD7A68300216741 /* Usuario.swift */; };
 		1F96EF081CD7A68300216741 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96EF061CD7A68300216741 /* Usuario.swift */; };
 		1F9F72331CE93F720010CF96 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F72321CE93F720010CF96 /* MD5.swift */; };
-		484D105E1CEFC22800E129D6 /* LoginIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105D1CEFC22800E129D6 /* LoginIterator.swift */; };
+		484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105D1CEFC22800E129D6 /* LoginInteractor.swift */; };
 		484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105F1CEFCE3000E129D6 /* Alerta.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 		1F96EF061CD7A68300216741 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		1F9F72321CE93F720010CF96 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		1F9F72371CE96D1D0010CF96 /* SextouNTI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SextouNTI-Bridging-Header.h"; sourceTree = "<group>"; };
-		484D105D1CEFC22800E129D6 /* LoginIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginIterator.swift; sourceTree = "<group>"; };
+		484D105D1CEFC22800E129D6 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		484D105F1CEFCE3000E129D6 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +102,7 @@
 		1F96EEDE1CD79EF400216741 /* SextouNTI */ = {
 			isa = PBXGroup;
 			children = (
-				484D105C1CEFC20900E129D6 /* Iterator */,
+				484D105C1CEFC20900E129D6 /* Interactor */,
 				484D105A1CEFC05300E129D6 /* View */,
 				484D10591CEFC04B00E129D6 /* Controllers */,
 				1F9F72311CE93F1D0010CF96 /* Util */,
@@ -180,12 +180,12 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
-		484D105C1CEFC20900E129D6 /* Iterator */ = {
+		484D105C1CEFC20900E129D6 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				484D105D1CEFC22800E129D6 /* LoginIterator.swift */,
+				484D105D1CEFC22800E129D6 /* LoginInteractor.swift */,
 			);
-			name = Iterator;
+			name = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				484D105E1CEFC22800E129D6 /* LoginIterator.swift in Sources */,
+				484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */,
 				1F9F72331CE93F720010CF96 /* MD5.swift in Sources */,
 				1F96EF011CD7A28400216741 /* Comentario.swift in Sources */,
 				1F96EEE21CD79EF400216741 /* LoginViewController.swift in Sources */,

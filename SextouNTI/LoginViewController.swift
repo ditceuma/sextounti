@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate {
+class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate,UITextFieldDelegate {
     
     // MARK: Properties
 
@@ -20,7 +20,8 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        emailTexField.delegate = self
+        senhaTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,11 +29,37 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Tratamento de teclado Libera teclado
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    
     func CarregaUsuario(object: NSDictionary) {
+        
+        NSLog("Teste:   \(object.allValues.last?.description)")
+        NSLog("Teste 2: \(object.allKeys.description)")
+        NSLog("Teste 3: \(object.allKeys.description.containsString("codigo"))")
+        
+        NSLog("Teste 4: \(object.objectForKey("codigo"))")
+        // Verifica se o serviço retornou uma mensagem de erro, já padronizada com código 13
+        
+        if(object.objectForKey("codigo")!.isEqual("13")) {
+            
+          Alerta.alerta("Usuario/Senha inválidos!", viewController: self)
+           // UserNameLabel.text = "Usuario/Senha inválidos!"
+            return
+            
+        }else{
         
         
             let usuarioLogin = Usuario()
-            
+        
             usuarioLogin.codigo = object["codigo"] as! Int
             usuarioLogin.nome = object["nome"] as! String
             usuarioLogin.email = object["email"] as! String
@@ -55,6 +82,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
             
             self.performSegueWithIdentifier("segueForTrilha", sender: self)
+        }
         
     }
 
@@ -66,7 +94,9 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         let md5 = MD5()
         let usuario = Usuario()
         
-        if emailTexField.text != nil && senhaTextField.text != nil {
+        if(emailTexField.text!.isEmpty || senhaTextField.text!.isEmpty){
+            Alerta.alerta("Preencha os campos!", viewController: self)
+        }else{
             
             usuario.email = emailTexField.text!
             usuario.senha = senhaTextField.text!
@@ -90,18 +120,9 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
                     } else {
                         do {
                             let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                            
                         
-                            // Verifica se o serviço retornou uma mensagem de erro, já padronizada com código 13
-                            if(object.allValues.last?.description == "13"){
-                                
-                               // Alerta.alerta("Usuario/Senha inválidos! ", viewController: self)
-                                self.UserNameLabel.text = "Usuario/Senha inválidos!"
-                            }else{
                             
                                 self.CarregaUsuario(object)
-                            }
-                            
                             
                         } catch let jsonError as NSError {
                             print( "JSONError: \( jsonError.localizedDescription )")
@@ -110,9 +131,6 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
                 }
                 task.resume()
             }
-        } else {
-           // Alerta.alerta("Usuario/Senha inválidos! ", viewController: self)
-            UserNameLabel.text = "Usuario/Senha inválidos!"
         }
 
     }
