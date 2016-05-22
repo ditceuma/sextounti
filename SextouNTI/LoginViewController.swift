@@ -12,6 +12,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     
     // MARK: Properties
 
+    
     @IBOutlet weak var emailTexField: UITextField!
     
     @IBOutlet weak var senhaTextField: UITextField!
@@ -42,17 +43,13 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     
     func CarregaUsuario(object: NSDictionary) {
         
-        NSLog("Teste:   \(object.allValues.last?.description)")
-        NSLog("Teste 2: \(object.allKeys.description)")
-        NSLog("Teste 3: \(object.allKeys.description.containsString("codigo"))")
-        
-        NSLog("Teste 4: \(object.objectForKey("codigo"))")
+      
         // Verifica se o serviço retornou uma mensagem de erro, já padronizada com código 13
         
         if(object.objectForKey("codigo")!.isEqual("13")) {
             
-          Alerta.alerta("Usuario/Senha inválidos!", viewController: self)
-           // UserNameLabel.text = "Usuario/Senha inválidos!"
+          //Alerta.alerta("Usuario/Senha inválidos!", viewController: self)
+          UserNameLabel.text = "Usuario/Senha inválidos!"
             return
             
         }else{
