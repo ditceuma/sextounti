@@ -13,7 +13,31 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        /*
+        let trilhasController = TrilhaTableViewController(nibName: "TrilhaTableViewController", bundle: nil)
+        let usuarioController = UsuarioViewController(nibName: "UsuarioViewController", bundle: nil)
+        
+        let nav1 = UINavigationController()
+        let nav2 = UINavigationController()
+        
+        // Insere ambos os views controllers em navigations controllers
+        nav1.pushViewController(trilhasController, animated: false)
+        nav2.pushViewController(usuarioController, animated: false)
+        
+        // Cria a TabBar
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [nav1,nav2]
+        
+        nav1.tabBarItem.title = "Trilhas"
+        //nav1.tabBarItem.image = UIImage()
+        nav2.tabBarItem.title = "Usuario"
+        //nav2.tabBarItem.image = UIImage()
+        
+        // Configura o UITabBarController como o view controller principal
+        self.view.window!.rootViewController = tabBarController
+        self.view.window!.makeKeyAndVisible()
+        */
+        
     }
 
     override func didReceiveMemoryWarning() {

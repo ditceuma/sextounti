@@ -10,10 +10,16 @@ import UIKit
 
 class UsuarioViewController: UIViewController {
 
+
+    @IBOutlet weak var imagemUsuario: UIImageView!
+    
+    @IBOutlet weak var nomeUsuarioLabel: UILabel!
+    
+    @IBOutlet weak var emailUsuarioLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

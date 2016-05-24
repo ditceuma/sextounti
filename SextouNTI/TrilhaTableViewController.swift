@@ -15,55 +15,33 @@ class TrilhaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
-        let trilhasController = TrilhaTableViewController(nibName: "TrilhaTableViewController", bundle: nil)
-        let usuarioController = UsuarioViewController(nibName: "UsuarioViewController", bundle: nil)
-        
-        let nav1 = UINavigationController()
-        let nav2 = UINavigationController()
-        
-        // Insere ambos os views controllers em navigations controllers
-        nav1.pushViewController(trilhasController, animated: false)
-        nav2.pushViewController(usuarioController, animated: false)
-        
-        // Cria a TabBar
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nav1,nav2]
-        
-        nav1.tabBarItem.title = "Trilhas"
-        //nav1.tabBarItem.image = UIImage()
-        nav2.tabBarItem.title = "Usuario"
-        //nav2.tabBarItem.image = UIImage()
-        
-        // Configura o UITabBarController como o view controller principal
-        self.window!.rootViewController = tabBarController
-        self.window!.makeKeyAndVisible()
-        */
-        
         let http = NSURLSession.sharedSession()
         
         let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
         
-        NSOperationQueue.mainQueue().addOperationWithBlock {
-            let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-                
-                if(error != nil) {
-                    print("URL Error!!")
-                } else {
-                    do {
-                        let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                        self.CarregaTrilhas(object)
-                    } catch let jsonError as NSError {
-                        print( "JSONError: \( jsonError.localizedDescription )")
-                    }
+        //NSOperationQueue.mainQueue().addOperationWithBlock {
+        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+            
+            if(error != nil) {
+                print("URL Error!!")
+            } else {
+                do {
+                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                    self.CarregaTrilhas(object)
+                } catch let jsonError as NSError {
+                    print( "JSONError: \( jsonError.localizedDescription )")
                 }
             }
-            task.resume()
         }
-
-
-
+        task.resume()
+        //}
  
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        self.tableView.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {

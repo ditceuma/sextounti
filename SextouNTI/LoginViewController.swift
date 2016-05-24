@@ -53,8 +53,13 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             //print("Descrição: \(usuarioLogin.perfil.descricao)")
             
             UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
+        
+            //let vc: MainViewController = MainViewController()
+            //self.presentViewController(vc, animated: true, completion: nil)
             
-            self.performSegueWithIdentifier("segueForTrilha", sender: self)
+            self.performSegueWithIdentifier("segueForTrilhas", sender: self)
+
+
         
     }
 
