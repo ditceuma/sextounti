@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate,UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate, UITextFieldDelegate {
     
     // MARK: Properties
 
@@ -18,6 +18,53 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     @IBOutlet weak var senhaTextField: UITextField!
     
     @IBOutlet weak var UserNameLabel: UILabel!
+    
+
+    @IBAction  func loginUsuario(sender: UIButton) {
+        
+        let md5 = MD5()
+        let usuario = Usuario()
+        
+        if(emailTexField.text!.isEmpty || senhaTextField.text!.isEmpty){
+            Alerta.alerta("Preencha os campos!", viewController: self)
+        }else{
+            
+            usuario.email = emailTexField.text!
+            usuario.senha = senhaTextField.text!
+            
+            usuario.senha = md5.digest(string: usuario.senha)
+            
+            let http = NSURLSession.sharedSession()
+            
+            let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario.email + "&password=" + usuario.senha)!
+            
+            NSLog("url de conexão: \(url)")
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+                    
+                    if(error != nil) {
+                        
+                        Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
+                        
+                        print("URL Error!!")
+                    } else {
+                        do {
+                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                            
+                            self.CarregaUsuario(object)
+                            
+                        } catch let jsonError as NSError {
+                            print( "JSONError: \( jsonError.localizedDescription )")
+                        }
+                    }
+                }
+                task.resume()
+            }
+        }
+        
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,66 +128,14 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             //let vc: MainViewController = MainViewController()
             //self.presentViewController(vc, animated: true, completion: nil)
             
-<<<<<<< HEAD
             self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 
 
-=======
-            self.performSegueWithIdentifier("segueForTrilha", sender: self)
+        
         }
->>>>>>> b9e6e6d08de3493607f57220698cddb79c9bb98c
         
     }
-
-    
-    // MARK: Actions
-    
-    @IBAction func loginUsuario(sender: UIButton) {
-        
-        let md5 = MD5()
-        let usuario = Usuario()
-        
-        if(emailTexField.text!.isEmpty || senhaTextField.text!.isEmpty){
-            Alerta.alerta("Preencha os campos!", viewController: self)
-        }else{
-            
-            usuario.email = emailTexField.text!
-            usuario.senha = senhaTextField.text!
-            
-            usuario.senha = md5.digest(string: usuario.senha)
-            
-            let http = NSURLSession.sharedSession()
-        
-            let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario.email + "&password=" + usuario.senha)!
-            
-            NSLog("url de conexão: \(url)")
-            
-            NSOperationQueue.mainQueue().addOperationWithBlock {
-                let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-                    
-                    if(error != nil) {
-                        
-                        Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
-                        
-                        print("URL Error!!")
-                    } else {
-                        do {
-                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                        
-                            
-                                self.CarregaUsuario(object)
-                            
-                        } catch let jsonError as NSError {
-                            print( "JSONError: \( jsonError.localizedDescription )")
-                        }
-                    }
-                }
-                task.resume()
-            }
-        }
-
-    }
-    
+      
 
 }
 
