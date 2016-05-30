@@ -10,6 +10,9 @@ import UIKit
 
 class TrilhaTableViewController: UITableViewController {
     
+    
+    @IBOutlet weak var tableViewTrilhas: UITableView!
+    
     var trilhasArray = [Trilha]()
 
     override func viewDidLoad() {
@@ -40,7 +43,7 @@ class TrilhaTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        self.tableView.reloadData()
+        tableViewTrilhas.reloadData()
 
     }
 

@@ -38,6 +38,43 @@ class MainViewController: UIViewController {
         self.view.window!.makeKeyAndVisible()
         */
         
+        func carregaImagens() {
+            
+            let http = NSURLSession.sharedSession()
+            
+            let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/initialize?token=99678f8f11be783c5e33c11008ba6772")!
+            
+            let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+                
+                if(error != nil) {
+                    print("URL Error!!")
+                } else {
+                    do {
+                        let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                        self.gravaImagens(object)
+                    } catch let jsonError as NSError {
+                        print( "JSONError: \( jsonError.localizedDescription )")
+                    }
+                }
+            }
+            task.resume()
+            
+            
+        }
+        
+        func gravaImagens(imagens: NSArray) {
+            
+            
+            for imagem:AnyObject in imagens {
+                
+                NSUserDefaults.standardUserDefaults().setObject(imagem["imagem"], forKey: imagem["matricula"])
+                
+                
+            }
+            
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     
 
     @IBAction  func loginUsuario(sender: UIButton) {
-        
+            
         let md5 = MD5()
         let usuario = Usuario()
         
@@ -108,6 +108,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             usuarioLogin.nome = object["nome"] as! String
             usuarioLogin.email = object["email"] as! String
             usuarioLogin.matricula = object["matricula"] as! Int
+            usuarioLogin.imagem = usuarioLogin.achaImagemPorMatricula(String(usuarioLogin.matricula))
             
             /*
              if let perfil = object["perfil"] as? NSDictionary {
@@ -123,10 +124,16 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             //print("Perfil: \(usuarioLogin.perfil.nome)")
             //print("Descrição: \(usuarioLogin.perfil.descricao)")
             
-            UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
+            //UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
         
             //let vc: MainViewController = MainViewController()
             //self.presentViewController(vc, animated: true, completion: nil)
+            
+            let usuarioVC:UsuarioViewController = UsuarioViewController()
+            
+            usuarioVC.imagemUsuario?.image = usuarioLogin.imagem!
+            usuarioVC.nomeUsuarioLabel?.text = usuarioLogin.nome
+            usuarioVC.emailUsuarioLabel?.text = usuarioLogin.email
             
             self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 

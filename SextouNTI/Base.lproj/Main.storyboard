@@ -165,6 +165,9 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="RY7-r8-3DY">
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
+                    <connections>
+                        <outlet property="tableViewTrilhas" destination="PLH-rn-1AZ" id="ntX-3k-29e"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z73-ay-99n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
