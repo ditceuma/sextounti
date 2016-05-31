@@ -54,7 +54,7 @@ class Usuario {
                 
                 //if String(imagem["matricula"]!)  == matricula {
                 
-                    if let data = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
+                    if let data = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0)) {
                         print(String(data))
                         let imagemConvertida = UIImage(data: data)
                     }

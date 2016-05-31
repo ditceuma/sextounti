@@ -22,7 +22,7 @@ class TrilhaTableViewController: UITableViewController {
         
         let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
         
-        //NSOperationQueue.mainQueue().addOperationWithBlock {
+        NSOperationQueue.mainQueue().addOperationWithBlock {
         let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
             
             if(error != nil) {
@@ -30,14 +30,18 @@ class TrilhaTableViewController: UITableViewController {
             } else {
                 do {
                     let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    self.CarregaTrilhas(object)
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.CarregaTrilhas(object)
+                    })
+
                 } catch let jsonError as NSError {
                     print( "JSONError: \( jsonError.localizedDescription )")
                 }
             }
         }
         task.resume()
-        //}
+        }
  
     }
     

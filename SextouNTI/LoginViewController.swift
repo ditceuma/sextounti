@@ -108,7 +108,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             usuarioLogin.nome = object["nome"] as! String
             usuarioLogin.email = object["email"] as! String
             usuarioLogin.matricula = object["matricula"] as! Int
-            usuarioLogin.imagem = usuarioLogin.achaImagemPorMatricula(String(usuarioLogin.matricula))
+            //usuarioLogin.imagem = usuarioLogin.achaImagemPorMatricula(String(usuarioLogin.matricula))
             
             /*
              if let perfil = object["perfil"] as? NSDictionary {
