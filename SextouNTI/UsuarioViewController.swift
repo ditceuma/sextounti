@@ -19,6 +19,11 @@ class UsuarioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imagemUsuario.image = usuarioLogin.imagem
+        self.nomeUsuarioLabel!.text = usuarioLogin.nome
+        self.emailUsuarioLabel!.text = usuarioLogin.email
+        
 
     }
 

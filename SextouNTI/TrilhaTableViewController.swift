@@ -8,40 +8,18 @@
 
 import UIKit
 
+var trilhasArray = [Trilha]()
+
 class TrilhaTableViewController: UITableViewController {
     
     
     @IBOutlet weak var tableViewTrilhas: UITableView!
     
-    var trilhasArray = [Trilha]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let http = NSURLSession.sharedSession()
-        
-        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
-        
-        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-            
-            if(error != nil) {
-                print("URL Error!!")
-            } else {
-                do {
-                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.CarregaTrilhas(object)
-                    })
 
-                } catch let jsonError as NSError {
-                    print( "JSONError: \( jsonError.localizedDescription )")
-                }
-            }
-        }
-        task.resume()
-
- 
     }
     
     override func viewDidAppear(animated: Bool) {

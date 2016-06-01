@@ -7,6 +7,8 @@
 //
 
 import UIKit
+ 
+var usuarioLogin:Usuario = Usuario()
 
 class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate, UITextFieldDelegate {
     
@@ -102,9 +104,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             return
             
         }else{
-        
-        
-            let usuarioLogin = Usuario()
+    
         
             usuarioLogin.codigo = object["codigo"] as! Int
             usuarioLogin.nome = object["nome"] as! String
@@ -127,18 +127,16 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             //print("Descrição: \(usuarioLogin.perfil.descricao)")
             
             //UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
-        
-            //let vc: MainViewController = MainViewController()
-            //self.presentViewController(vc, animated: true, completion: nil)
             
-            let usuarioVC:UsuarioViewController = UsuarioViewController()
+            let trilha: Trilha = Trilha()
             
-            usuarioVC.imagemUsuario?.image = usuarioLogin.imagem!
-            usuarioVC.nomeUsuarioLabel?.text = usuarioLogin.nome
-            usuarioVC.emailUsuarioLabel?.text = usuarioLogin.email
+            trilha.carregaTrilhas()
             
-            self.performSegueWithIdentifier("segueForTrilhas", sender: self)
+            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 
+            })
+            
 
         
         }
