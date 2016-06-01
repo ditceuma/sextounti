@@ -51,8 +51,10 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
                     } else {
                         do {
                             let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                            dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                                self.CarregaUsuario(object)
+                            })
                             
-                            self.CarregaUsuario(object)
                             
                         } catch let jsonError as NSError {
                             print( "JSONError: \( jsonError.localizedDescription )")

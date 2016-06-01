@@ -22,7 +22,6 @@ class TrilhaTableViewController: UITableViewController {
         
         let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
         
-        NSOperationQueue.mainQueue().addOperationWithBlock {
         let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
             
             if(error != nil) {
@@ -41,7 +40,7 @@ class TrilhaTableViewController: UITableViewController {
             }
         }
         task.resume()
-        }
+
  
     }
     

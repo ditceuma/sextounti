@@ -16,4 +16,6 @@ class Trilha {
     var sobre: String = ""
     var data: String = ""
     
+    func carregaTrilhas
+    
 }
