@@ -1,36 +1,44 @@
 //
-//  UsuarioViewController.swift
+//  DetalheTrilhaViewController.swift
 //  SextouNTI
 //
-//  Created by Rabelo on 17/05/16.
+//  Created by Rabelo on 03/06/16.
 //  Copyright © 2016 br.com.fagutapp. All rights reserved.
 //
 
 import UIKit
 
-class UsuarioViewController: UIViewController {
+class DetalheTrilhaViewController: UIViewController {
+    
+    // MARK: Model
+    var trilha:Trilha?
     
     // MARK: Properties
-
     @IBOutlet weak var imagemUsuario: UIImageView!
-    
-    @IBOutlet weak var nomeUsuarioLabel: UILabel!
-    
-    @IBOutlet weak var emailUsuarioLabel: UILabel!
+    @IBOutlet weak var tituloTrilha: UILabel!
+    @IBOutlet weak var decricaoTrilha: UILabel!
+    @IBOutlet weak var numeroComentariosTrilha: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.imagemUsuario.image = usuarioLogin.imagem
-        self.nomeUsuarioLabel!.text = usuarioLogin.nome
-        self.emailUsuarioLabel!.text = usuarioLogin.email
-        
 
+        self.tituloTrilha.text = trilha?.titulo
+        self.decricaoTrilha.text = trilha?.sobre
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Actions
+    @IBAction func likeAction(sender: AnyObject) {
+    }
+    
+    @IBAction func comentAction(sender: AnyObject) {
+    }
+    
+    @IBAction func sharedAction(sender: AnyObject) {
     }
     
 

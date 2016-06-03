@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F143E611D012F97007B7C46 /* DetalheTrilhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */; };
 		1F18998D1CD8462E00A12A4B /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18998C1CD8462E00A12A4B /* Perfil.swift */; };
 		1F18998E1CD8462E00A12A4B /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18998C1CD8462E00A12A4B /* Perfil.swift */; };
-		1F1BA85E1CF1123500D84267 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1BA85D1CF1123500D84267 /* MainViewController.swift */; };
 		1F348C451CEA039A00BDE0A9 /* TrilhaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */; };
 		1F348C471CEA10F000BDE0A9 /* TrilhaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F348C461CEA10F000BDE0A9 /* TrilhaTableViewController.swift */; };
 		1F45D15F1CEB57DF0035B58E /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */; };
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalheTrilhaViewController.swift; sourceTree = "<group>"; };
 		1F18998C1CD8462E00A12A4B /* Perfil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
 		1F1BA85D1CF1123500D84267 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrilhaTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 				484D105B1CEFC1CF00E129D6 /* Cells */,
 				1F348C461CEA10F000BDE0A9 /* TrilhaTableViewController.swift */,
 				1F96EEE11CD79EF400216741 /* LoginViewController.swift */,
+				1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */,
 				1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */,
 				1F1BA85D1CF1123500D84267 /* MainViewController.swift */,
 			);
@@ -301,6 +303,7 @@
 				484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */,
 				1F348C451CEA039A00BDE0A9 /* TrilhaTableViewCell.swift in Sources */,
 				1F96EEE01CD79EF400216741 /* AppDelegate.swift in Sources */,
+				1F143E611D012F97007B7C46 /* DetalheTrilhaViewController.swift in Sources */,
 				1F18998D1CD8462E00A12A4B /* Perfil.swift in Sources */,
 				1F96EF071CD7A68300216741 /* Usuario.swift in Sources */,
 				1F45D15F1CEB57DF0035B58E /* UsuarioViewController.swift in Sources */,

@@ -128,8 +128,8 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             
             //UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
             
+            // Carrega as trilhas
             let trilha: Trilha = Trilha()
-            
             trilha.carregaTrilhas()
             
             dispatch_async(dispatch_get_main_queue(), {() -> Void in
