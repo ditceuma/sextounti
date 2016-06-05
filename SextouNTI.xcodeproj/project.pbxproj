@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F143E611D012F97007B7C46 /* DetalheTrilhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */; };
+		1F1687C01D01A5DE002DE3DA /* commentButton25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */; };
 		1F18998D1CD8462E00A12A4B /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18998C1CD8462E00A12A4B /* Perfil.swift */; };
 		1F18998E1CD8462E00A12A4B /* Perfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F18998C1CD8462E00A12A4B /* Perfil.swift */; };
 		1F348C451CEA039A00BDE0A9 /* TrilhaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */; };
@@ -26,6 +27,8 @@
 		1F96EF071CD7A68300216741 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96EF061CD7A68300216741 /* Usuario.swift */; };
 		1F96EF081CD7A68300216741 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96EF061CD7A68300216741 /* Usuario.swift */; };
 		1F9F72331CE93F720010CF96 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F72321CE93F720010CF96 /* MD5.swift */; };
+		1FC0F3DC1D0311AE001BB1BF /* shareBnt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */; };
+		1FC0F3DE1D0312FC001BB1BF /* LikeBnt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */; };
 		484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105D1CEFC22800E129D6 /* LoginInteractor.swift */; };
 		484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105F1CEFCE3000E129D6 /* Alerta.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalheTrilhaViewController.swift; sourceTree = "<group>"; };
+		1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentButton25x25.png; sourceTree = "<group>"; };
 		1F18998C1CD8462E00A12A4B /* Perfil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
 		1F1BA85D1CF1123500D84267 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrilhaTableViewCell.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		1F96EF061CD7A68300216741 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		1F9F72321CE93F720010CF96 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		1F9F72371CE96D1D0010CF96 /* SextouNTI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SextouNTI-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareBnt.png; sourceTree = "<group>"; };
+		1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeBnt.png; sourceTree = "<group>"; };
 		484D105D1CEFC22800E129D6 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		484D105F1CEFCE3000E129D6 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,8 +164,11 @@
 		484D10591CEFC04B00E129D6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */,
 				484D105B1CEFC1CF00E129D6 /* Cells */,
 				1F348C461CEA10F000BDE0A9 /* TrilhaTableViewController.swift */,
+				1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */,
+				1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */,
 				1F96EEE11CD79EF400216741 /* LoginViewController.swift */,
 				1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */,
 				1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */,
@@ -276,8 +285,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FC0F3DC1D0311AE001BB1BF /* shareBnt.png in Resources */,
 				1F96EEEA1CD79EF400216741 /* LaunchScreen.storyboard in Resources */,
 				1F96EEE71CD79EF400216741 /* Assets.xcassets in Resources */,
+				1FC0F3DE1D0312FC001BB1BF /* LikeBnt.png in Resources */,
+				1F1687C01D01A5DE002DE3DA /* commentButton25x25.png in Resources */,
 				1F96EEE51CD79EF400216741 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
