@@ -23,15 +23,15 @@ class TrilhaTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
         tableViewTrilhas.reloadData()
-
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
 
@@ -46,50 +46,6 @@ class TrilhaTableViewController: UITableViewController {
         
     }
     
-    func CarregaTrilhas(trilhas: NSArray) {
-        
-        print(trilhas)
-        
-        for trilha:AnyObject in trilhas {
-            
-            let trilhaLocal = Trilha()
-            
-            let codigo = trilha["codigo"] as? Int
-            let usuario = trilha["usuario"] as? NSDictionary
-            let titulo = trilha["titulo"] as? String
-            let sobre = trilha["sobre"] as? String
-            let data = trilha["dataFormatada"] as? String
-            let perfil = usuario!["perfil"] as? NSDictionary
-            let nomeUsuario = usuario!["nome"]  as! String
-            
-            trilhaLocal.codigo = codigo!
-            trilhaLocal.titulo = titulo!
-            trilhaLocal.sobre = sobre!
-            trilhaLocal.data = data!
-            trilhaLocal.nomeUsuario = nomeUsuario
-            
-            /*
-             trilhaLocal.usuario.nome = usuario!["nome"] as! String
-             trilhaLocal.usuario.email = usuario!["email"] as! String
-             trilhaLocal.usuario.matricula = usuario!["matricula"] as! Int
-             trilhaLocal.usuario.perfil.codigo = perfil!["codigo"] as! Int
-             trilhaLocal.usuario.perfil.descricao = perfil!["descricao"] as! String
-             trilhaLocal.usuario.perfil.nome = perfil!["descricao"] as! String
-             */
-            
-            
-            trilhasArray.append(trilhaLocal)
-            
-            
-            print("Codigo: \(trilhaLocal.codigo) ")
-            print("Nome: \(trilhaLocal.nomeUsuario)")
-            //print("Email: \(trilhaLocal.usuario.email)")
-            print("Sobre: \(trilhaLocal.titulo)")
-            print("Data: \(trilhaLocal.data)")
-        }
-        
-    }
-
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -110,41 +66,6 @@ class TrilhaTableViewController: UITableViewController {
         return cell
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 
     // MARK: - Navigation

@@ -76,10 +76,6 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         senhaTextField.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: Tratamento de teclado Libera teclado
     func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -28,11 +28,15 @@ class UsuarioViewController: UIViewController {
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: Actions
+
+    @IBAction func logout(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        self.presentViewController(VC1, animated:true, completion: nil)
     }
-    
 
     /*
     // MARK: - Navigation

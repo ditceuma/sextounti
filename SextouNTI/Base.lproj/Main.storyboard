@@ -9,17 +9,17 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SextouNTI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="SextouNTI" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sextou NTI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJd-Qn-LdN">
-                                <rect key="frame" x="126" y="115" width="123" height="30"/>
+                                <rect key="frame" x="99" y="115" width="123" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Udr-vU-f85"/>
                                     <constraint firstAttribute="width" constant="123" id="p0G-qx-SX8"/>
@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sua Senha" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zK-Pk-Jse">
-                                <rect key="frame" x="72" y="265" width="230" height="30"/>
+                                <rect key="frame" x="45" y="265" width="230" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1VF-dF-HUj"/>
                                     <constraint firstAttribute="width" constant="230" id="w3Y-1x-qla"/>
@@ -38,7 +38,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NF-HD-fql">
-                                <rect key="frame" x="72" y="345" width="230" height="48"/>
+                                <rect key="frame" x="45" y="345" width="230" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="anz-TK-tPl"/>
@@ -53,14 +53,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logonti" translatesAutoresizingMaskIntoConstraints="NO" id="OIK-Ci-98N">
-                                <rect key="frame" x="156" y="432" width="62" height="50"/>
+                                <rect key="frame" x="129" y="432" width="62" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DTn-Iu-Ima"/>
                                     <constraint firstAttribute="width" constant="62" id="MfL-wa-nS6"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seu Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GlF-OA-1dp">
-                                <rect key="frame" x="72" y="204" width="230" height="30"/>
+                                <rect key="frame" x="45" y="204" width="230" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="clT-Z3-XRj"/>
                                     <constraint firstAttribute="width" constant="230" id="iCm-yS-1bJ"/>
@@ -69,7 +69,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg5-Q0-PHQ">
-                                <rect key="frame" x="20" y="510" width="335" height="21"/>
+                                <rect key="frame" x="-8" y="510" width="336" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="335" id="fE9-7u-8sr"/>
                                     <constraint firstAttribute="height" constant="21" id="fUg-Qn-ELQ"/>
@@ -95,7 +95,7 @@
                             <constraint firstItem="BJd-Qn-LdN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="95" id="yug-2W-yXm"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="UserNameLabel" destination="sg5-Q0-PHQ" id="bdX-GO-DGQ"/>
                         <outlet property="emailTexField" destination="GlF-OA-1dp" id="XTE-UW-rRb"/>
@@ -107,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="-556.5" y="262.5"/>
         </scene>
-        <!--Trilhas-->
+        <!--Trilha Table View Controller-->
         <scene sceneID="ZKa-No-bQk">
             <objects>
                 <tableViewController id="6Hj-Nj-yMW" customClass="TrilhaTableViewController" customModule="SextouNTI" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,6 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.058823529411764705" green="0.15686274509803921" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrilhaTableViewCell" rowHeight="90" id="6iE-pf-qcm" customClass="TrilhaTableViewCell" customModule="SextouNTI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="90"/>
@@ -129,27 +130,30 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nve-eE-yk0">
                                             <rect key="frame" x="98" y="8" width="214" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYf-U0-Nn4">
                                             <rect key="frame" x="0.0" y="70" width="90" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fk-jg-Oc2">
                                             <rect key="frame" x="203" y="60" width="109" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.15686274509803921" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataTrilhaLabel" destination="1Fk-jg-Oc2" id="qtD-TH-Nbs"/>
                                     <outlet property="nomeUsuarioLabel" destination="TYf-U0-Nn4" id="Q7y-M3-Rxf"/>
                                     <outlet property="photoImageView" destination="JhJ-19-6hh" id="NPd-fR-dSK"/>
                                     <outlet property="tituloTrilhaLabel" destination="Nve-eE-yk0" id="EqF-Ad-jNq"/>
-                                    <segue destination="PMC-U7-p4M" kind="show" identifier="segueForDetalhe" id="tBa-sK-RQA"/>
+                                    <segue destination="PMC-U7-p4M" kind="show" id="llb-KO-bO1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -158,7 +162,7 @@
                             <outlet property="delegate" destination="6Hj-Nj-yMW" id="j0g-BU-zTR"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Trilhas" id="QUE-Tm-oRl"/>
+                    <navigationItem key="navigationItem" id="PiP-FI-aPt"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -171,9 +175,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z73-ay-99n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531" y="-58"/>
+            <point key="canvasLocation" x="1118" y="-58"/>
         </scene>
-        <!--Detalhe Trilha View Controller-->
+        <!--Trilhas Registradas-->
         <scene sceneID="j7V-Vf-jZN">
             <objects>
                 <viewController id="PMC-U7-p4M" customClass="DetalheTrilhaViewController" customModule="SextouNTI" customModuleProvider="target" sceneMemberID="viewController">
@@ -268,28 +272,11 @@
                                     <action selector="likeAction:" destination="PMC-U7-p4M" eventType="touchUpInside" id="CsE-DZ-u3n"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XUk-cp-A6T">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Llx-Kj-5Hc"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Trilhas Registradas" id="Kt5-9N-ClU">
-                                        <barButtonItem key="backBarButtonItem" title="voltar" id="BhK-Df-dG0"/>
-                                        <barButtonItem key="leftBarButtonItem" title="voltar" id="WUV-rf-o0J">
-                                            <connections>
-                                                <segue destination="5yE-hV-363" kind="show" id="0E9-2S-zzz"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.21176470588235294" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1JI-Z1-Iyc" firstAttribute="top" secondItem="Yel-WE-n2I" secondAttribute="bottom" constant="8" id="0tF-2H-Xyf"/>
                             <constraint firstItem="A3W-OM-8GR" firstAttribute="top" secondItem="UiL-3f-5dZ" secondAttribute="bottom" constant="37" id="6Yb-YB-AEi"/>
-                            <constraint firstItem="XUk-cp-A6T" firstAttribute="top" secondItem="Xbi-cX-sWe" secondAttribute="topMargin" constant="20" id="7b0-cm-G10"/>
                             <constraint firstItem="Yel-WE-n2I" firstAttribute="trailing" secondItem="Xbi-cX-sWe" secondAttribute="trailingMargin" id="7oe-xj-1aw"/>
                             <constraint firstItem="siJ-AA-pNg" firstAttribute="leading" secondItem="Xbi-cX-sWe" secondAttribute="leadingMargin" id="G5U-Kc-s5R"/>
                             <constraint firstItem="UiL-3f-5dZ" firstAttribute="top" secondItem="LWw-0j-9hn" secondAttribute="bottom" constant="25" id="Igh-5T-JMs"/>
@@ -302,14 +289,15 @@
                             <constraint firstItem="UiL-3f-5dZ" firstAttribute="centerX" secondItem="Xbi-cX-sWe" secondAttribute="centerX" id="XUM-tp-tGW"/>
                             <constraint firstItem="omT-ZP-iOc" firstAttribute="trailing" secondItem="Xbi-cX-sWe" secondAttribute="trailingMargin" id="nnC-JI-5po"/>
                             <constraint firstItem="A3W-OM-8GR" firstAttribute="trailing" secondItem="Xbi-cX-sWe" secondAttribute="trailingMargin" id="rRg-fb-8Up"/>
-                            <constraint firstItem="XUk-cp-A6T" firstAttribute="leading" secondItem="Xbi-cX-sWe" secondAttribute="leadingMargin" constant="-20" id="vJj-ih-dB7"/>
                             <constraint firstItem="1JI-Z1-Iyc" firstAttribute="leading" secondItem="V53-AO-8js" secondAttribute="trailing" constant="8" id="vUe-S1-blL"/>
                             <constraint firstItem="omT-ZP-iOc" firstAttribute="leading" secondItem="Xbi-cX-sWe" secondAttribute="leadingMargin" id="wr9-3T-Ra5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XUk-cp-A6T" secondAttribute="trailing" constant="-20" id="xrU-KK-YJH"/>
                             <constraint firstItem="omT-ZP-iOc" firstAttribute="top" secondItem="A3W-OM-8GR" secondAttribute="bottom" constant="15" id="zzf-Dx-Weh"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Trilhas Registradas" id="xsI-Zg-9AZ">
+                        <barButtonItem key="backBarButtonItem" title="Retornar" id="gbF-UQ-wMk"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -321,20 +309,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yP9-KT-2U4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="-58"/>
+            <point key="canvasLocation" x="1583" y="-58"/>
         </scene>
         <!--Trilhas Registradas-->
         <scene sceneID="TGT-c0-Auk">
             <objects>
                 <tabBarController title="Trilhas Registradas" id="5yE-hV-363" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GhM-I1-NT3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="6Hj-Nj-yMW" kind="relationship" relationship="viewControllers" id="eaA-Tw-2Gz"/>
+                        <segue destination="CpB-SJ-esF" kind="relationship" relationship="viewControllers" id="eaA-Tw-2Gz"/>
                         <segue destination="857-Bl-tim" kind="relationship" relationship="viewControllers" id="mLR-gV-p9o"/>
                     </connections>
                 </tabBarController>
@@ -392,6 +380,9 @@
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logout:" destination="857-Bl-tim" eventType="touchUpInside" id="tPX-6O-sqH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.070588235294117646" green="0.27450980392156865" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -420,6 +411,26 @@
             </objects>
             <point key="canvasLocation" x="531" y="734"/>
         </scene>
+        <!--Trilhas-->
+        <scene sceneID="Vfd-gL-WZ2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CpB-SJ-esF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trilhas" id="QUE-Tm-oRl"/>
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wsr-ea-YnA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Hj-Nj-yMW" kind="relationship" relationship="rootViewController" id="Vb9-5U-fY3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsq-Zn-0Yx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530.5" y="-58.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="LikeBnt.png" width="25" height="25"/>
@@ -427,7 +438,4 @@
         <image name="logonti" width="36" height="36"/>
         <image name="shareBnt.png" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="0E9-2S-zzz"/>
-    </inferredMetricsTieBreakers>
 </document>
