@@ -31,6 +31,8 @@
 		1FC0F3DE1D0312FC001BB1BF /* LikeBnt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */; };
 		484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105D1CEFC22800E129D6 /* LoginInteractor.swift */; };
 		484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105F1CEFCE3000E129D6 /* Alerta.swift */; };
+		9CD0A4C91D32C994005806D1 /* nophoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4C81D32C994005806D1 /* nophoto.jpg */; };
+		9CD0A4CB1D32EEE0005806D1 /* bntRightArrow25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeBnt.png; sourceTree = "<group>"; };
 		484D105D1CEFC22800E129D6 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		484D105F1CEFCE3000E129D6 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		9CD0A4C81D32C994005806D1 /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nophoto.jpg; sourceTree = "<group>"; };
+		9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntRightArrow25x25.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,11 @@
 				1F96EEFF1CD7A18600216741 /* Model */,
 				1F96EEDF1CD79EF400216741 /* AppDelegate.swift */,
 				1F96EEE61CD79EF400216741 /* Assets.xcassets */,
+				9CD0A4C81D32C994005806D1 /* nophoto.jpg */,
+				9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */,
+				1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */,
+				1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */,
+				1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */,
 				1F96EEEB1CD79EF400216741 /* Info.plist */,
 			);
 			path = SextouNTI;
@@ -164,11 +173,8 @@
 		484D10591CEFC04B00E129D6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */,
 				484D105B1CEFC1CF00E129D6 /* Cells */,
 				1F348C461CEA10F000BDE0A9 /* TrilhaTableViewController.swift */,
-				1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */,
-				1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */,
 				1F96EEE11CD79EF400216741 /* LoginViewController.swift */,
 				1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */,
 				1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */,
@@ -289,6 +295,8 @@
 				1F96EEEA1CD79EF400216741 /* LaunchScreen.storyboard in Resources */,
 				1F96EEE71CD79EF400216741 /* Assets.xcassets in Resources */,
 				1FC0F3DE1D0312FC001BB1BF /* LikeBnt.png in Resources */,
+				9CD0A4CB1D32EEE0005806D1 /* bntRightArrow25x25.png in Resources */,
+				9CD0A4C91D32C994005806D1 /* nophoto.jpg in Resources */,
 				1F1687C01D01A5DE002DE3DA /* commentButton25x25.png in Resources */,
 				1F96EEE51CD79EF400216741 /* Main.storyboard in Resources */,
 			);

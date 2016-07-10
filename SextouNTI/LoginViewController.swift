@@ -42,29 +42,29 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             
             NSLog("url de conexão: \(url)")
             
-            NSOperationQueue.mainQueue().addOperationWithBlock {
-                let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+            let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+                
+                if(error != nil) {
                     
-                    if(error != nil) {
+                    Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
+                    
+                    print("URL Error!!")
+                } else {
+                    do {
+                        let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                         
-                        Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
-                        
-                        print("URL Error!!")
-                    } else {
-                        do {
-                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                            dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                                self.CarregaUsuario(object)
-                            })
-                            
-                            
-                        } catch let jsonError as NSError {
-                            print( "JSONError: \( jsonError.localizedDescription )")
+                        dispatch_sync(dispatch_get_main_queue()) {
+                            usuario.carregaImagens()
+                            self.CarregaUsuario(object)
                         }
+                        
+                        
+                    } catch let jsonError as NSError {
+                        print( "JSONError: \( jsonError.localizedDescription )")
                     }
                 }
-                task.resume()
             }
+            task.resume()
         }
         
     }
@@ -101,38 +101,17 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             
         }else{
     
-        
             usuarioLogin.codigo = object["codigo"] as! Int
             usuarioLogin.nome = object["nome"] as! String
             usuarioLogin.email = object["email"] as! String
             usuarioLogin.matricula = object["matricula"] as! Int
-            //usuarioLogin.imagem = usuarioLogin.achaImagemPorMatricula(String(usuarioLogin.matricula))
-            
-            /*
-             if let perfil = object["perfil"] as? NSDictionary {
-             usuarioLogin.perfil.codigo = perfil["codigo"] as! Int
-             usuarioLogin.perfil.nome = perfil["nome"] as! String
-             usuarioLogin.perfil.descricao = perfil["descricao"] as! String
-             
-             }
-             */
+            usuarioLogin.imagem = usuarioLogin.achaImagemPorMatricula(String(usuarioLogin.matricula))
             
             print("Codigo: \(usuarioLogin.codigo)")
             print("Nome: \(usuarioLogin.nome)")
-            //print("Perfil: \(usuarioLogin.perfil.nome)")
-            //print("Descrição: \(usuarioLogin.perfil.descricao)")
             
-            //UserNameLabel.text = String(usuarioLogin.codigo) +  " - " + usuarioLogin.nome
-            
-            // Carrega as trilhas
-            let trilha: Trilha = Trilha()
-            trilha.carregaTrilhas()
-            
-            dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 
-            })
-            
+            self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 
         
         }

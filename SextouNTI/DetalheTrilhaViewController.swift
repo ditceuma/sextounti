@@ -24,6 +24,7 @@ class DetalheTrilhaViewController: UIViewController {
 
         self.tituloTrilha.text = trilha?.titulo
         self.decricaoTrilha.text = trilha?.sobre
+        self.imagemUsuario.image = trilha?.imagem
     }
 
     override func didReceiveMemoryWarning() {

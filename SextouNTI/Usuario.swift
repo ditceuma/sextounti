@@ -39,28 +39,27 @@ class Usuario {
     
     func achaImagemPorMatricula(matricula: String) -> UIImage {
         
-        var imagemConvertida:UIImage =  UIImage()
+        let imagemConvertida:UIImage =  UIImage()
         
         if  NSUserDefaults.standardUserDefaults().objectForKey("imagens") != nil {
             let imagens = NSUserDefaults.standardUserDefaults().objectForKey("imagens") as! [NSDictionary]
             
             for imagem:NSDictionary in imagens {
                 
-                let base64String = String(imagem["imagem"]!)
-
-                NSLog(base64String)
+                let imageSring = imagem["imagem"] as! NSArray
                 
-                print(matricula)
+                let base64String = imageSring[0].stringByReplacingOccurrencesOfString("\n", withString: "")
+            
                 
-                //if String(imagem["matricula"]!)  == matricula {
+                if String(imagem["matricula"]!)  == matricula {
                 
                     if let data = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0)) {
-                        print(String(data))
-                        let imagemConvertida = UIImage(data: data)
+                        if let imagemConvertida = UIImage(data: data) {
+                            return imagemConvertida
+                        }
                     }
-                
+                }
 
-                //}
             }
             
         }
@@ -85,7 +84,10 @@ class Usuario {
             } else {
                 do {
                     let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    self.gravaImagens(object)
+                    
+                    dispatch_sync(dispatch_get_main_queue()) {
+                        self.gravaImagens(object)
+                    }
                 } catch let jsonError as NSError {
                     print( "JSONError: \( jsonError.localizedDescription )")
                 }

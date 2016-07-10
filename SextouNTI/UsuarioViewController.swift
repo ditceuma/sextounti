@@ -32,6 +32,8 @@ class UsuarioViewController: UIViewController {
 
     @IBAction func logout(sender: AnyObject) {
         
+        
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         
         let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
