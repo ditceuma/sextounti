@@ -52,7 +52,6 @@ class TrilhaTableViewController: UITableViewController {
         
         
 
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -92,6 +91,11 @@ class TrilhaTableViewController: UITableViewController {
         cell.photoImageView.image = trilha.imagem == nil ? UIImage(named: "nophoto.jpg"): trilha.imagem
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+       cell.backgroundColor = cell.contentView.backgroundColor
     }
 
 
