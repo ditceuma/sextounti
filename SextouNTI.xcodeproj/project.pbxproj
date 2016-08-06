@@ -31,9 +31,14 @@
 		1FC0F3DE1D0312FC001BB1BF /* LikeBnt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */; };
 		484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105D1CEFC22800E129D6 /* LoginInteractor.swift */; };
 		484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105F1CEFCE3000E129D6 /* Alerta.swift */; };
+		9C148B541D52353F00C9A73E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C148B531D52353F00C9A73E /* Reachability.swift */; };
+		9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */; };
+		9C37E4D31D41C09500D1182E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */; };
 		9C4DB7901D33D7DB00D4AB81 /* rightarrowwite25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */; };
+		9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9740F91D50467C00D01F70 /* UtilImagem.swift */; };
 		9CD0A4C91D32C994005806D1 /* nophoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4C81D32C994005806D1 /* nophoto.jpg */; };
 		9CD0A4CB1D32EEE0005806D1 /* bntRightArrow25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */; };
+		DF907463827D188F565F3F86 /* Pods_SextouNTI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868C36EDFA6681B244045865 /* Pods_SextouNTI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04394DC5BF141A88A2AD953C /* Pods-SextouNTI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SextouNTI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SextouNTI/Pods-SextouNTI.debug.xcconfig"; sourceTree = "<group>"; };
 		1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalheTrilhaViewController.swift; sourceTree = "<group>"; };
-		1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentButton25x25.png; sourceTree = "<group>"; };
+		1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = commentButton25x25.png; path = SextouNTI/commentButton25x25.png; sourceTree = "<group>"; };
 		1F18998C1CD8462E00A12A4B /* Perfil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perfil.swift; sourceTree = "<group>"; };
-		1F1BA85D1CF1123500D84267 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrilhaTableViewCell.swift; sourceTree = "<group>"; };
 		1F348C461CEA10F000BDE0A9 /* TrilhaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrilhaTableViewController.swift; sourceTree = "<group>"; };
 		1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
@@ -69,13 +74,19 @@
 		1F96EF061CD7A68300216741 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		1F9F72321CE93F720010CF96 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		1F9F72371CE96D1D0010CF96 /* SextouNTI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SextouNTI-Bridging-Header.h"; sourceTree = "<group>"; };
-		1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareBnt.png; sourceTree = "<group>"; };
-		1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeBnt.png; sourceTree = "<group>"; };
+		1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shareBnt.png; path = SextouNTI/shareBnt.png; sourceTree = "<group>"; };
+		1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LikeBnt.png; path = SextouNTI/LikeBnt.png; sourceTree = "<group>"; };
 		484D105D1CEFC22800E129D6 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		484D105F1CEFCE3000E129D6 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
-		9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightarrowwite25x25.png; sourceTree = "<group>"; };
-		9CD0A4C81D32C994005806D1 /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nophoto.jpg; sourceTree = "<group>"; };
-		9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bntRightArrow25x25.png; sourceTree = "<group>"; };
+		787697839C5334AC4B7B6183 /* Pods-SextouNTI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SextouNTI.release.xcconfig"; path = "Pods/Target Support Files/Pods-SextouNTI/Pods-SextouNTI.release.xcconfig"; sourceTree = "<group>"; };
+		868C36EDFA6681B244045865 /* Pods_SextouNTI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SextouNTI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C148B531D52353F00C9A73E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentarioViewController.swift; sourceTree = "<group>"; };
+		9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
+		9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightarrowwite25x25.png; path = SextouNTI/rightarrowwite25x25.png; sourceTree = "<group>"; };
+		9C9740F91D50467C00D01F70 /* UtilImagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilImagem.swift; sourceTree = "<group>"; };
+		9CD0A4C81D32C994005806D1 /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nophoto.jpg; path = SextouNTI/nophoto.jpg; sourceTree = "<group>"; };
+		9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bntRightArrow25x25.png; path = SextouNTI/bntRightArrow25x25.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF907463827D188F565F3F86 /* Pods_SextouNTI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,12 +108,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19A89F779D41401F816E8311 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				868C36EDFA6681B244045865 /* Pods_SextouNTI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1F96EED31CD79EF300216741 = {
 			isa = PBXGroup;
 			children = (
+				9CFE40591D50D2F800BFB0F0 /* imagens */,
 				1F96EEDE1CD79EF400216741 /* SextouNTI */,
 				1F96EEF31CD79EF400216741 /* SextouNTITests */,
 				1F96EEDD1CD79EF400216741 /* Products */,
+				E685DB84D922C3B6AEBFDD08 /* Pods */,
+				19A89F779D41401F816E8311 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,12 +147,6 @@
 				1F96EEFF1CD7A18600216741 /* Model */,
 				1F96EEDF1CD79EF400216741 /* AppDelegate.swift */,
 				1F96EEE61CD79EF400216741 /* Assets.xcassets */,
-				9CD0A4C81D32C994005806D1 /* nophoto.jpg */,
-				9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */,
-				9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */,
-				1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */,
-				1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */,
-				1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */,
 				1F96EEEB1CD79EF400216741 /* Info.plist */,
 			);
 			path = SextouNTI;
@@ -158,6 +175,8 @@
 		1F9F72311CE93F1D0010CF96 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9C148B531D52353F00C9A73E /* Reachability.swift */,
+				9C9740F91D50467C00D01F70 /* UtilImagem.swift */,
 				1F9F72371CE96D1D0010CF96 /* SextouNTI-Bridging-Header.h */,
 				1F9F72341CE944520010CF96 /* Obj-C */,
 				1F9F72321CE93F720010CF96 /* MD5.swift */,
@@ -181,7 +200,7 @@
 				1F96EEE11CD79EF400216741 /* LoginViewController.swift */,
 				1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */,
 				1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */,
-				1F1BA85D1CF1123500D84267 /* MainViewController.swift */,
+				9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */,
+				9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -211,6 +231,28 @@
 			name = Interactor;
 			sourceTree = "<group>";
 		};
+		9CFE40591D50D2F800BFB0F0 /* imagens */ = {
+			isa = PBXGroup;
+			children = (
+				9CD0A4C81D32C994005806D1 /* nophoto.jpg */,
+				9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */,
+				9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */,
+				1FC0F3DB1D0311AE001BB1BF /* shareBnt.png */,
+				1F1687BF1D01A5DE002DE3DA /* commentButton25x25.png */,
+				1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */,
+			);
+			name = imagens;
+			sourceTree = "<group>";
+		};
+		E685DB84D922C3B6AEBFDD08 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04394DC5BF141A88A2AD953C /* Pods-SextouNTI.debug.xcconfig */,
+				787697839C5334AC4B7B6183 /* Pods-SextouNTI.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -218,9 +260,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F96EEF91CD79EF400216741 /* Build configuration list for PBXNativeTarget "SextouNTI" */;
 			buildPhases = (
+				8D196A590DA972C4C248DEA7 /* [CP] Check Pods Manifest.lock */,
 				1F96EED81CD79EF400216741 /* Sources */,
 				1F96EED91CD79EF400216741 /* Frameworks */,
 				1F96EEDA1CD79EF400216741 /* Resources */,
+				4690E22A7D4B9C9A9AAA80E8 /* [CP] Embed Pods Frameworks */,
+				56F867BD04BD11D080437EE7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -315,6 +360,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4690E22A7D4B9C9A9AAA80E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SextouNTI/Pods-SextouNTI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56F867BD04BD11D080437EE7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SextouNTI/Pods-SextouNTI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D196A590DA972C4C248DEA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F96EED81CD79EF400216741 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -325,6 +418,9 @@
 				1F96EF011CD7A28400216741 /* Comentario.swift in Sources */,
 				1F96EEE21CD79EF400216741 /* LoginViewController.swift in Sources */,
 				484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */,
+				9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */,
+				9C148B541D52353F00C9A73E /* Reachability.swift in Sources */,
+				9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */,
 				1F348C451CEA039A00BDE0A9 /* TrilhaTableViewCell.swift in Sources */,
 				1F96EEE01CD79EF400216741 /* AppDelegate.swift in Sources */,
 				1F143E611D012F97007B7C46 /* DetalheTrilhaViewController.swift in Sources */,
@@ -332,6 +428,7 @@
 				1F96EF071CD7A68300216741 /* Usuario.swift in Sources */,
 				1F45D15F1CEB57DF0035B58E /* UsuarioViewController.swift in Sources */,
 				1F348C471CEA10F000BDE0A9 /* TrilhaTableViewController.swift in Sources */,
+				9C37E4D31D41C09500D1182E /* ComentTableViewCell.swift in Sources */,
 				1F96EF041CD7A57D00216741 /* Trilha.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,27 +562,31 @@
 		};
 		1F96EEFA1CD79EF400216741 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04394DC5BF141A88A2AD953C /* Pods-SextouNTI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SextouNTI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fagutapp.SextouNTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/SextouNTI-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		1F96EEFB1CD79EF400216741 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 787697839C5334AC4B7B6183 /* Pods-SextouNTI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SextouNTI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fagutapp.SextouNTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/SextouNTI-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

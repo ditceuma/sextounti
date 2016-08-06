@@ -8,7 +8,7 @@
 
 import UIKit
  
-var usuarioLogin:Usuario = Usuario()
+var usuarioLogin:Usuario?
 
 class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate, UITextFieldDelegate {
     
@@ -23,49 +23,55 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
     
 
     @IBAction  func loginUsuario(sender: UIButton) {
-            
+        
         let md5 = MD5()
         let usuario = Usuario()
         
-        if(emailTexField.text!.isEmpty || senhaTextField.text!.isEmpty){
-            Alerta.alerta("Preencha os campos!", viewController: self)
-        }else{
-            
-            usuario.email = emailTexField.text!
-            usuario.senha = senhaTextField.text!
-            
-            usuario.senha = md5.digest(string: usuario.senha)
-            
-            let http = NSURLSession.sharedSession()
-            
-            let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario.email + "&password=" + usuario.senha)!
-            
-            NSLog("url de conexão: \(url)")
-            
-            let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+        if Reachability.isConnectedToNetwork() {
+           
+            if(emailTexField.text!.isEmpty || senhaTextField.text!.isEmpty){
+                Alerta.alerta("Preencha os campos!", viewController: self)
+            }else{
                 
-                if(error != nil) {
+                usuario!.email = emailTexField.text!
+                
+                let http = NSURLSession.sharedSession()
+                
+                let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario!.email! + "&password=" + md5.digest(string: senhaTextField.text!))!
+                
+                NSLog("url de conexão: \(url)")
+                
+                let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
                     
-                    Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
-                    
-                    print("URL Error!!")
-                } else {
-                    do {
-                        let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    if(error != nil) {
                         
-                        dispatch_sync(dispatch_get_main_queue()) {
-                            usuario.carregaImagens()
-                            self.CarregaUsuario(object)
+                        Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
+                        
+                        print("URL Error!!")
+                    } else {
+                        do {
+                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                            
+                            dispatch_sync(dispatch_get_main_queue()) {
+                                let utilImagem = UtilImagem()
+                                utilImagem.carregaImagens()
+                                self.CarregaUsuario(object)
+                            }
+                            
+                            
+                        } catch let jsonError as NSError {
+                            print( "JSONError: \( jsonError.localizedDescription )")
                         }
-                        
-                        
-                    } catch let jsonError as NSError {
-                        print( "JSONError: \( jsonError.localizedDescription )")
                     }
                 }
+                task.resume()
             }
-            task.resume()
+            
+        } else {
+             Alerta.alerta("Sem conexão com a internet!", viewController: self)
         }
+        
+
         
     }
 
@@ -101,15 +107,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
             
         }else{
     
-            usuarioLogin.codigo = object["codigo"] as! Int
-            usuarioLogin.nome = object["nome"] as! String
-            usuarioLogin.email = object["email"] as! String
-            usuarioLogin.matricula = object["matricula"] as! Int
-            usuarioLogin.imagem = usuarioLogin.achaImagemPorMatricula(String(usuarioLogin.matricula))
-            
-            print("Codigo: \(usuarioLogin.codigo)")
-            print("Nome: \(usuarioLogin.nome)")
-            
+            usuarioLogin = Usuario(dictionary: object)
 
             self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 

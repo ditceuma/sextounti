@@ -7,95 +7,82 @@
 //
 
 import UIKit
+import Foundation
 
-class Usuario {
-    
-    // MARK: Properties
-    
-    let DEFAULT_PASSWORD = "e10adc3949ba59abbe56e057f20f883e"
-    
-    var codigo: Int = 0
-    var email: String = ""
-    var matricula: Int = 0
-    var nome: String = ""
-    var perfil: Perfil!
-    var senha: String = ""
-    var imagem: UIImage!
-    
-    
-    
-    // MARK: Actions
-    
-    func  isPasswordDefault() -> Bool {
-        return (senha == self.DEFAULT_PASSWORD)
-    }
-    
-    func gravaImagens(imagens: NSArray) {
-        
-            
-            NSUserDefaults.standardUserDefaults().setObject(imagens, forKey: "imagens")
-            
-    }
-    
-    func achaImagemPorMatricula(matricula: String) -> UIImage {
-        
-        let imagemConvertida:UIImage =  UIImage()
-        
-        if  NSUserDefaults.standardUserDefaults().objectForKey("imagens") != nil {
-            let imagens = NSUserDefaults.standardUserDefaults().objectForKey("imagens") as! [NSDictionary]
-            
-            for imagem:NSDictionary in imagens {
-                
-                let imageSring = imagem["imagem"] as! NSArray
-                
-                let base64String = imageSring[0].stringByReplacingOccurrencesOfString("\n", withString: "")
-            
-                
-                if String(imagem["matricula"]!)  == matricula {
-                
-                    if let data = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0)) {
-                        if let imagemConvertida = UIImage(data: data) {
-                            return imagemConvertida
-                        }
-                    }
-                }
+/* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-            }
-            
+public class Usuario {
+    public var codigo : Int?
+    public var matricula : Int?
+    public var nome : String?
+    public var email : String?
+    public var senha : String?
+    public var perfil : Perfil?
+    
+    /**
+     Returns an array of models based on given dictionary.
+     
+     Sample usage:
+     let usuario_list = Usuario.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+     
+     - parameter array:  NSArray from JSON dictionary.
+     
+     - returns: Array of Usuario Instances.
+     */
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Usuario]
+    {
+        var models:[Usuario] = []
+        for item in array
+        {
+            models.append(Usuario(dictionary: item as! NSDictionary)!)
         }
-
-       return imagemConvertida
-
+        return models
+    }
+    
+    /**
+     Constructs the object based on the given dictionary.
+     
+     Sample usage:
+     let usuario = Usuario(someDictionaryFromJSON)
+     
+     - parameter dictionary:  NSDictionary from JSON.
+     
+     - returns: Usuario Instance.
+     */
+    required public init?(dictionary: NSDictionary) {
+        
+        codigo = dictionary["codigo"] as? Int
+        matricula = dictionary["matricula"] as? Int
+        nome = dictionary["nome"] as? String
+        email = dictionary["email"] as? String
+        senha = dictionary["senha"] as? String
+        if (dictionary["perfil"] != nil) { perfil = Perfil(dictionary: dictionary["perfil"] as! NSDictionary) }
+    }
+    
+    required public init?() {
         
     }
     
     
-    
-    func carregaImagens() {
+    /**
+     Returns the dictionary representation for the current instance.
+     
+     - returns: NSDictionary.
+     */
+    public func dictionaryRepresentation() -> NSDictionary {
         
-        let http = NSURLSession.sharedSession()
+        let dictionary = NSMutableDictionary()
         
-        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/initialize?token=99678f8f11be783c5e33c11008ba6772")!
+        dictionary.setValue(self.codigo, forKey: "codigo")
+        dictionary.setValue(self.matricula, forKey: "matricula")
+        dictionary.setValue(self.nome, forKey: "nome")
+        dictionary.setValue(self.email, forKey: "email")
+        dictionary.setValue(self.senha, forKey: "senha")
+        dictionary.setValue(self.perfil?.dictionaryRepresentation(), forKey: "perfil")
         
-        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-            
-            if(error != nil) {
-                print("URL Error!!")
-            } else {
-                do {
-                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    
-                    dispatch_sync(dispatch_get_main_queue()) {
-                        self.gravaImagens(object)
-                    }
-                } catch let jsonError as NSError {
-                    print( "JSONError: \( jsonError.localizedDescription )")
-                }
-            }
-        }
-        task.resume()
-        
-        
+        return dictionary
     }
+    
+
     
 }

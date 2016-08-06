@@ -11,7 +11,7 @@ import UIKit
 class DetalheTrilhaViewController: UIViewController {
     
     // MARK: Model
-    var trilha:Trilha?
+    var trilha = Trilha()
     
     // MARK: Properties
     @IBOutlet weak var imagemUsuario: UIImageView!
@@ -22,9 +22,11 @@ class DetalheTrilhaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let utilImagem = UtilImagem()
+        
         self.tituloTrilha.text = trilha?.titulo
         self.decricaoTrilha.text = trilha?.sobre
-        self.imagemUsuario.image = trilha?.imagem
+        self.imagemUsuario.image = utilImagem.achaImagemPorMatricula(String(trilha!.usuario!.matricula!))
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,14 +45,18 @@ class DetalheTrilhaViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+ 
+     // MARK: - Navigation
+    
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     
+        if segue.identifier == "segueForComents" {
+            let vc: ComentarioViewController =  segue.destinationViewController as! ComentarioViewController
+         
+            vc.trilha = trilha!
+        }
+ 
     }
-    */
 
 }

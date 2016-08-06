@@ -8,6 +8,8 @@
 
 import UIKit
 
+import IQKeyboardManagerSwift
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let usuario = Usuario()
-        usuario.carregaImagens()
+        
+        IQKeyboardManager.sharedManager().enable = true
+        
+        let utilImagem = UtilImagem()
+        utilImagem.carregaImagens()
         
         return true
     }

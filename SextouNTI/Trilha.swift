@@ -5,84 +5,78 @@
 //  Created by Rabelo on 02/05/16.
 //  Copyright © 2016 br.com.fagutapp. All rights reserved.
 //
+import Foundation
 
-import UIKit
+/* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-var trilhasArray = [Trilha]()
-
-class Trilha {
+public class Trilha {
+    public var codigo : Int?
+    public var usuario : Usuario?
+    public var titulo : String?
+    public var sobre : String?
+    public var dataFormatada: String?
     
-    var codigo: Int = 0
-    var nomeUsuario:  String = ""
-    var titulo: String = ""
-    var sobre: String = ""
-    var data: String = ""
-    var imagem: UIImage!
-    
-    
-    func carregaTrilhas() {
-        
-        let http = NSURLSession.sharedSession()
-        
-        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
-        
-        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-                
-            if(error != nil) {
-                print("URL Error!!")
-            } else {
-                do {
-                    
-                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    
-                    self.exibeTrilhas(object)
-  
-                } catch let jsonError as NSError {
-                    print( "JSONError: \( jsonError.localizedDescription )")
-                }
-            }
+    /**
+     Returns an array of models based on given dictionary.
+     
+     Sample usage:
+     let trilha_list = Trilha.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+     
+     - parameter array:  NSArray from JSON dictionary.
+     
+     - returns: Array of Trilha Instances.
+     */
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Trilha]
+    {
+        var models:[Trilha] = []
+        for item in array
+        {
+            models.append(Trilha(dictionary: item as! NSDictionary)!)
         }
-        task.resume()
-
+        return models
     }
     
-    func exibeTrilhas(trilhas: NSArray) {
+    /**
+     Constructs the object based on the given dictionary.
+     
+     Sample usage:
+     let trilha = Trilha(someDictionaryFromJSON)
+     
+     - parameter dictionary:  NSDictionary from JSON.
+     
+     - returns: Trilha Instance.
+     */
+    required public init?(dictionary: NSDictionary) {
         
-        trilhasArray.removeAll()
-        
-        for trilha:AnyObject in trilhas {
-            
-            let trilhaLocal = Trilha()
-            let usuarioTrilha: Usuario = Usuario()
-            
-            let codigo = trilha["codigo"] as? Int
-            let usuario = trilha["usuario"] as? NSDictionary
-            let titulo = trilha["titulo"] as? String
-            let sobre = trilha["sobre"] as? String
-            let data = trilha["dataFormatada"] as? String
-            let perfil = usuario!["perfil"] as? NSDictionary
-            let nomeUsuario = usuario!["nome"]  as! String
-            let matricula = usuario!["matricula"] as! Int
-            
-            trilhaLocal.codigo = codigo!
-            trilhaLocal.titulo = titulo!
-            trilhaLocal.sobre = sobre!
-            trilhaLocal.data = data!
-            trilhaLocal.nomeUsuario = nomeUsuario
-            trilhaLocal.imagem = usuarioTrilha.achaImagemPorMatricula( String(matricula))
-         
-            
-            trilhasArray.append(trilhaLocal)
-            
-            
-            print("Codigo: \(trilhaLocal.codigo) ")
-            print("Nome: \(trilhaLocal.nomeUsuario)")
-            //print("Email: \(trilhaLocal.usuario.email)")
-            print("Sobre: \(trilhaLocal.titulo)")
-            print("Data: \(trilhaLocal.data)")
-        }
+        codigo = dictionary["codigo"] as? Int
+        if (dictionary["usuario"] != nil) { usuario = Usuario(dictionary: dictionary["usuario"] as! NSDictionary) }
+        titulo = dictionary["titulo"] as? String
+        sobre = dictionary["sobre"] as? String
+        dataFormatada = dictionary["dataFormatada"] as? String
+    }
+    
+    required public init?() {
         
     }
     
+    
+    /**
+     Returns the dictionary representation for the current instance.
+     
+     - returns: NSDictionary.
+     */
+    public func dictionaryRepresentation() -> NSDictionary {
+        
+        let dictionary = NSMutableDictionary()
+        
+        dictionary.setValue(self.codigo, forKey: "codigo")
+        dictionary.setValue(self.usuario?.dictionaryRepresentation(), forKey: "usuario")
+        dictionary.setValue(self.titulo, forKey: "titulo")
+        dictionary.setValue(self.sobre, forKey: "sobre")
+        
+        return dictionary
+    }
+    
+
     
 }

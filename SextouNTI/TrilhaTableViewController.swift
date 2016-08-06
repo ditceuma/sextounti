@@ -15,7 +15,7 @@ class TrilhaTableViewController: UITableViewController {
     
     @IBOutlet weak var tableViewTrilhas: UITableView!
     
-    let trilha: Trilha = Trilha()
+    var trilhasArray: [Trilha] = []
     
 
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class TrilhaTableViewController: UITableViewController {
                     
                     let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
                     dispatch_sync(dispatch_get_main_queue(), {
-                        self.trilha.exibeTrilhas(object)
+                        self.trilhasArray = Trilha.modelsFromDictionaryArray(object)
                         self.tableViewTrilhas.reloadData()
                     })
                     
@@ -76,6 +76,8 @@ class TrilhaTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let utilImagem = UtilImagem()
+        
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "TrilhaTableViewCell"
         
@@ -86,9 +88,9 @@ class TrilhaTableViewController: UITableViewController {
         
         
         cell.tituloTrilhaLabel.text = trilha.titulo
-        cell.dataTrilhaLabel.text = trilha.data
-        cell.nomeUsuarioLabel.text = trilha.nomeUsuario
-        cell.photoImageView.image = trilha.imagem == nil ? UIImage(named: "nophoto.jpg"): trilha.imagem
+        cell.dataTrilhaLabel.text = trilha.dataFormatada
+        cell.nomeUsuarioLabel.text = trilha.usuario?.nome
+        cell.photoImageView.image =  utilImagem.achaImagemPorMatricula(String(trilha.usuario!.matricula!))
         
         return cell
     }

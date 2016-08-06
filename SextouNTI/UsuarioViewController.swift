@@ -21,9 +21,11 @@ class UsuarioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.imagemUsuario.image = usuarioLogin.imagem
-        self.nomeUsuarioLabel!.text = usuarioLogin.nome
-        self.emailUsuarioLabel!.text = usuarioLogin.email
+        let utilImagem = UtilImagem()
+        
+        self.imagemUsuario.image = utilImagem.achaImagemPorMatricula(String(usuarioLogin!.matricula!))
+        self.nomeUsuarioLabel!.text = usuarioLogin!.nome
+        self.emailUsuarioLabel!.text = usuarioLogin!.email
         
 
     }
