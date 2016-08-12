@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "shareBnt.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "LikeBnt@2x.png",
       "scale" : "2x"
     },
     {

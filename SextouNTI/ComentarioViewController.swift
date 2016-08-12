@@ -10,7 +10,7 @@ import UIKit
 
 import Alamofire
 
-class ComentarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ComentarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     // MARK: Properties
 
@@ -76,12 +76,7 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
 
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        comentarioTexField.resignFirstResponder()
-        
-        return true
-    }
+
 
     override func viewWillAppear(animated: Bool) {
         
@@ -130,6 +125,19 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
 //            
 //            
         }
+    
+    // MARK: Tratamento de teclado Libera teclado
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        comentarioTexField.resignFirstResponder()
+        
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     // MARK: - Table view data source
     
