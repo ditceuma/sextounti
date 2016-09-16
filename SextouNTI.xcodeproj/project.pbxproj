@@ -33,6 +33,10 @@
 		484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105F1CEFCE3000E129D6 /* Alerta.swift */; };
 		9C148B541D52353F00C9A73E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C148B531D52353F00C9A73E /* Reachability.swift */; };
 		9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */; };
+		9C3165B61D8713600026BD08 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3165B31D8713600026BD08 /* FBSDKCoreKit.framework */; };
+		9C3165B71D8713600026BD08 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3165B41D8713600026BD08 /* FBSDKLoginKit.framework */; };
+		9C3165B81D8713600026BD08 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3165B51D8713600026BD08 /* FBSDKShareKit.framework */; };
+		9C3165BA1D87BA320026BD08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */; };
 		9C37E4D31D41C09500D1182E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */; };
 		9C4DB7901D33D7DB00D4AB81 /* rightarrowwite25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */; };
 		9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9740F91D50467C00D01F70 /* UtilImagem.swift */; };
@@ -82,6 +86,10 @@
 		868C36EDFA6681B244045865 /* Pods_SextouNTI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SextouNTI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C148B531D52353F00C9A73E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentarioViewController.swift; sourceTree = "<group>"; };
+		9C3165B31D8713600026BD08 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.14.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		9C3165B41D8713600026BD08 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.14.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		9C3165B51D8713600026BD08 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.14.0/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
 		9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightarrowwite25x25.png; path = SextouNTI/rightarrowwite25x25.png; sourceTree = "<group>"; };
 		9C9740F91D50467C00D01F70 /* UtilImagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilImagem.swift; sourceTree = "<group>"; };
@@ -94,7 +102,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3165B81D8713600026BD08 /* FBSDKShareKit.framework in Frameworks */,
 				DF907463827D188F565F3F86 /* Pods_SextouNTI.framework in Frameworks */,
+				9C3165B61D8713600026BD08 /* FBSDKCoreKit.framework in Frameworks */,
+				9C3165B71D8713600026BD08 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +122,9 @@
 		19A89F779D41401F816E8311 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C3165B31D8713600026BD08 /* FBSDKCoreKit.framework */,
+				9C3165B41D8713600026BD08 /* FBSDKLoginKit.framework */,
+				9C3165B51D8713600026BD08 /* FBSDKShareKit.framework */,
 				868C36EDFA6681B244045865 /* Pods_SextouNTI.framework */,
 			);
 			name = Frameworks;
@@ -148,6 +162,7 @@
 				1F96EEDF1CD79EF400216741 /* AppDelegate.swift */,
 				1F96EEE61CD79EF400216741 /* Assets.xcassets */,
 				1F96EEEB1CD79EF400216741 /* Info.plist */,
+				9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */,
 			);
 			path = SextouNTI;
 			sourceTree = "<group>";
@@ -346,6 +361,7 @@
 				9CD0A4CB1D32EEE0005806D1 /* bntRightArrow25x25.png in Resources */,
 				9CD0A4C91D32C994005806D1 /* nophoto.jpg in Resources */,
 				1F1687C01D01A5DE002DE3DA /* commentButton25x25.png in Resources */,
+				9C3165BA1D87BA320026BD08 /* GoogleService-Info.plist in Resources */,
 				9C4DB7901D33D7DB00D4AB81 /* rightarrowwite25x25.png in Resources */,
 				1F96EEE51CD79EF400216741 /* Main.storyboard in Resources */,
 			);
@@ -565,6 +581,13 @@
 			baseConfigurationReference = 04394DC5BF141A88A2AD953C /* Pods-SextouNTI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper\"",
+					"/Users/flaviorabelo/Documents/FacebookSDKs-iOS-4.14.0",
+				);
 				INFOPLIST_FILE = SextouNTI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -580,6 +603,13 @@
 			baseConfigurationReference = 787697839C5334AC4B7B6183 /* Pods-SextouNTI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper\"",
+					"/Users/flaviorabelo/Documents/FacebookSDKs-iOS-4.14.0",
+				);
 				INFOPLIST_FILE = SextouNTI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

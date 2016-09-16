@@ -7,81 +7,86 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FirebaseAuth
+
  
 var usuarioLogin:Usuario?
 
-class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnectionDelegate, UITextFieldDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // MARK: Properties
 
+    @IBOutlet weak var aivLoadSpinner: UIActivityIndicatorView!
     
-    @IBOutlet weak var emailTexField: UITextField!
-    
-    @IBOutlet weak var senhaTextField: UITextField!
-    
-    @IBOutlet weak var UserNameLabel: UILabel!
-    
-
-    @IBAction  func loginUsuario(sender: UIButton) {
-        
-        let md5 = MD5()
-        let usuario = Usuario()
-        
-        if Reachability.isConnectedToNetwork() {
-           
-            if(emailTexField.text!.isEmpty || senhaTextField.text!.isEmpty){
-                Alerta.alerta("Preencha os campos!", viewController: self)
-            }else{
-                
-                usuario!.email = emailTexField.text!
-                
-                let http = NSURLSession.sharedSession()
-                
-                let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/login?token=99678f8f11be783c5e33c11008ba6772&email=" + usuario!.email! + "&password=" + md5.digest(string: senhaTextField.text!))!
-                
-                NSLog("url de conexão: \(url)")
-                
-                let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-                    
-                    if(error != nil) {
-                        
-                        Alerta.alerta("Erro ao chamar serviço! ", viewController: self)
-                        
-                        print("URL Error!!")
-                    } else {
-                        do {
-                            let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                            
-                            dispatch_sync(dispatch_get_main_queue()) {
-                                let utilImagem = UtilImagem()
-                                utilImagem.carregaImagens()
-                                self.CarregaUsuario(object)
-                            }
-                            
-                            
-                        } catch let jsonError as NSError {
-                            print( "JSONError: \( jsonError.localizedDescription )")
-                        }
-                    }
-                }
-                task.resume()
-            }
-            
-        } else {
-             Alerta.alerta("Sem conexão com a internet!", viewController: self)
-        }
-        
-
-        
-    }
-
+    var loginButton = FBSDKLoginButton()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        emailTexField.delegate = self
-        senhaTextField.delegate = self
+        
+        self.loginButton.hidden = true
+        
+        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            if let user = user {
+                // User is signed in.
+                // move the user to the home screen
+                let mainStoreBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let tabBarController  = mainStoreBoard.instantiateViewControllerWithIdentifier("TabBarController")
+                
+                self.presentViewController(tabBarController, animated: true, completion: nil)
+                
+            } else {
+                
+                self.loginButton.center = CGPointMake(self.view.center.x, self.view.center.y + 200)
+                self.loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+                self.loginButton.delegate = self
+                
+                self.view!.addSubview(self.loginButton)
+                
+                self.loginButton.hidden = false
+                
+            }
+        }
+
+
     }
 
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+        print("User Logged In")
+        
+        aivLoadSpinner.startAnimating()
+        
+        self.loginButton.hidden = true
+        
+        if (error != nil) {
+            self.loginButton.hidden = false
+            aivLoadSpinner.stopAnimating()
+        }
+        else if(result.isCancelled){
+            
+            self.loginButton.hidden = false
+            aivLoadSpinner.stopAnimating()
+            
+        }
+        else {
+            
+            
+            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+            
+            FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                
+                print("User Logged in Firebase")
+                
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User did Logout")
+    }
     
     // MARK: Tratamento de teclado Libera teclado
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -101,8 +106,6 @@ class LoginViewController: UIViewController, UITextViewDelegate, NSURLConnection
         
         if(object.objectForKey("codigo")!.isEqual("13")) {
             
-          //Alerta.alerta("Usuario/Senha inválidos!", viewController: self)
-          UserNameLabel.text = "Usuario/Senha inválidos!"
             return
             
         }else{
