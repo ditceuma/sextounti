@@ -80,49 +80,49 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewWillAppear(animated: Bool) {
         
-//        let http = NSURLSession.sharedSession()
-//        
-//        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchComments?token=99678f8f11be783c5e33c11008ba6772&trilhaCodigo=" + String(trilha!.codigo!))!
-//        
-//        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-//            
-//            if(error != nil) {
-//                print("URL Error!!")
-//            } else {
-//                do {
-//                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) // as! NSArray
-//                    
-//                    if object.isKindOfClass(NSArray) {
-//                        dispatch_sync(dispatch_get_main_queue(), {
-//                            self.comentariosArray = Comentario.modelsFromDictionaryArray(object as! NSArray)
-//                            print(object)
-//                            self.tableViewComentarios.reloadData()
-//                        })
-//                    }
-//                    
-//                } catch let jsonError as NSError {
-//                    print( "JSONError: \( jsonError.localizedDescription )")
-//                }
-//            }
-//        }
-//        task.resume()
-//        
+        let http = NSURLSession.sharedSession()
         
+        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchComments?token=99678f8f11be783c5e33c11008ba6772&trilhaCodigo=" + String(trilha!.codigo!))!
         
-        Alamofire.request(.GET, "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchComments?token=99678f8f11be783c5e33c11008ba6772&trilhaCodigo=").responseJSON {
-            result in
+        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
             
-            if let object = result.data {
-                if object.isKindOfClass(NSArray) {
-                    dispatch_sync(dispatch_get_main_queue(), {
-                        self.comentariosArray = Comentario.modelsFromDictionaryArray(object as! NSArray)
-                        print(object)
-                        self.tableViewComentarios.reloadData()
-                    })
+            if(error != nil) {
+                print("URL Error!!")
+            } else {
+                do {
+                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) // as! NSArray
+                    
+                    if object.isKindOfClass(NSArray) {
+                        dispatch_sync(dispatch_get_main_queue(), {
+                            self.comentariosArray = Comentario.modelsFromDictionaryArray(object as! NSArray)
+                            print(object)
+                            self.tableViewComentarios.reloadData()
+                        })
+                    }
+                    
+                } catch let jsonError as NSError {
+                    print( "JSONError: \( jsonError.localizedDescription )")
                 }
             }
         }
-            
+        task.resume()
+        
+        
+        
+//        Alamofire.request(.GET, "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchComments?token=99678f8f11be783c5e33c11008ba6772&trilhaCodigo=").responseJSON {
+//            result in
+//            
+//            if let object = result.data {
+//                if object.isKindOfClass(NSArray) {
+//                    dispatch_sync(dispatch_get_main_queue(), {
+//                        self.comentariosArray = Comentario.modelsFromDictionaryArray(object as! NSArray)
+//                        print(object)
+//                        self.tableViewComentarios.reloadData()
+//                    })
+//                }
+//            }
+//        }
+        
             
             
     }

@@ -7,49 +7,63 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FirebaseAuth
 
 class UsuarioViewController: UIViewController {
     
-    // MARK: Properties
-
-    @IBOutlet weak var imagemUsuario: UIImageView!
-    
-    @IBOutlet weak var nomeUsuarioLabel: UILabel!
-    
-    @IBOutlet weak var emailUsuarioLabel: UILabel!
+    @IBOutlet weak var uilName: UILabel!
+    @IBOutlet weak var uiimvProfilePic: UIImageView!
+    @IBOutlet weak var uilEmail: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let utilImagem = UtilImagem()
+        self.uiimvProfilePic.layer.cornerRadius = self.uiimvProfilePic.frame.size.height/2
+        self.uiimvProfilePic.layer.masksToBounds = false
+        self.uiimvProfilePic.clipsToBounds = true
         
-        self.imagemUsuario.image = utilImagem.achaImagemPorMatricula(String(usuarioLogin!.matricula!))
-        self.nomeUsuarioLabel!.text = usuarioLogin!.nome
-        self.emailUsuarioLabel!.text = usuarioLogin!.email
+        self.uiimvProfilePic.layer.borderWidth = 3.0;
+        self.uiimvProfilePic.layer.borderColor = UIColor.redColor().CGColor
         
+        if let user = FIRAuth.auth()?.currentUser {
+            let name = user.displayName
+            let email = user.email
+            let photoUrl = user.photoURL
+            let uid = user.uid;
+            
+            self.uilName.text = name
+            self.uilEmail.text = email
+            let data = NSData(contentsOfURL: photoUrl!)
 
+            self.uiimvProfilePic.image = UIImage(data: data!)!
+            
+        } else {
+            // No user is signed in.
+        }
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     // MARK: Actions
-
-    @IBAction func logout(sender: AnyObject) {
+    
+    @IBAction func logoutUser(sender: AnyObject) {
         
+        // signs the user out of the firebase  app
+        try! FIRAuth.auth()!.signOut()
         
+        FBSDKAccessToken.setCurrentAccessToken(nil)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        // move the user to the Login Screen
+        let mainStoreBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        self.presentViewController(VC1, animated:true, completion: nil)
+        let LoginViewController  = mainStoreBoard.instantiateViewControllerWithIdentifier("LoginViewController")
+        
+        self.presentViewController(LoginViewController, animated: true, completion: nil)
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
