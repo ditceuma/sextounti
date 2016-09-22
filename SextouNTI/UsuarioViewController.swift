@@ -15,6 +15,7 @@ class UsuarioViewController: UIViewController {
     @IBOutlet weak var uilName: UILabel!
     @IBOutlet weak var uiimvProfilePic: UIImageView!
     @IBOutlet weak var uilEmail: UILabel!
+    @IBOutlet weak var btnLogout: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,12 @@ class UsuarioViewController: UIViewController {
         self.uiimvProfilePic.layer.masksToBounds = false
         self.uiimvProfilePic.clipsToBounds = true
         
-        self.uiimvProfilePic.layer.borderWidth = 3.0;
-        self.uiimvProfilePic.layer.borderColor = UIColor.redColor().CGColor
+        self.uiimvProfilePic.layer.borderWidth = 2.0;
+        self.uiimvProfilePic.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        btnLogout.backgroundColor = UIColor.clearColor()
+        btnLogout.layer.borderWidth = 1.0
+        btnLogout.layer.borderColor = UIColor.whiteColor().CGColor
         
         if let user = FIRAuth.auth()?.currentUser {
             let name = user.displayName

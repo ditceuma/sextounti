@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 
 class TrilhaTableViewController: UITableViewController {
@@ -17,36 +18,79 @@ class TrilhaTableViewController: UITableViewController {
     
     var trilhasArray: [Trilha] = []
     
+    let ref = FIRDatabase.database().reference()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let http = NSURLSession.sharedSession()
         
-        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchTrail?token=99678f8f11be783c5e33c11008ba6772")!
         
-        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
+        ref.observeEventType(.Value, withBlock: { (snapshot) in
             
-            if(error != nil) {
-                print("URL Error!!")
-            } else {
-                do {
-                    
-                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-                    dispatch_sync(dispatch_get_main_queue(), {
-                        self.trilhasArray = Trilha.modelsFromDictionaryArray(object)
-                        self.tableViewTrilhas.reloadData()
-                    })
-                    
-                    
-                } catch let jsonError as NSError {
-                    print( "JSONError: \( jsonError.localizedDescription )")
-                }
-            }
+            //print(snapshot.value)
+            self.trilhasArray.removeAll()
+            
+            self.carregaTrilhas(snapshot.value as! NSDictionary)
+            self.tableViewTrilhas.reloadData()
+   
+        }) { (error) in
+            print(error.localizedDescription)
         }
-        task.resume()
+        
 
     }
+    
+    
+    func carregaTrilhas(snapshot: NSDictionary) {
+        
+        
+        
+        let trilhas = snapshot["trilhas"] as! NSArray
+        
+        //print(trilhas)
+        
+        for trilha in trilhas {
+            let trilhaLocal = Trilha()
+            
+            trilhaLocal?.codigo =  trilha["CODIGO"] as? Int
+            trilhaLocal?.titulo =  trilha["TITULO"] as? String
+            trilhaLocal?.dataFormatada = trilha["DATA_EVENTO"] as? String
+            trilhaLocal?.sobre = trilha["SOBRE"] as? String
+            trilhaLocal?.usuario =  carregaUsuario(snapshot,  codigo: (trilha["FK_USUARIO"] as? Int)!)      // fabricaModels.retornaUsuarioPorCodigo(trilha["FK_USUARIO"] as! Int)
+            
+            //print(trilhaLocal)
+            
+            self.trilhasArray.append(trilhaLocal!)
+            
+        }
+        
+    }
+    
+    func carregaUsuario(snapshot: NSDictionary, codigo: Int ) -> Usuario {
+        
+        let usuarios = snapshot["usuarios"] as! NSArray
+        
+        let usuarioLocal = Usuario()
+
+        for usuario in usuarios {
+            
+            
+            if String(usuario["CODIGO"] as! Int) == String(codigo) {
+                usuarioLocal?.codigo = usuario["CODIGO"] as? Int
+                usuarioLocal?.nome = usuario["NOME"] as? String
+                usuarioLocal?.email = usuario["EMAIL"] as? String
+                usuarioLocal?.matricula = usuario["MATRICULA"] as? Int
+                usuarioLocal?.urlImage = usuario["IMAGEM"] as? String
+ 
+            }
+            
+        }
+        
+        return usuarioLocal!
+        
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         
@@ -76,8 +120,6 @@ class TrilhaTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let utilImagem = UtilImagem()
-        
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "TrilhaTableViewCell"
         
@@ -86,11 +128,18 @@ class TrilhaTableViewController: UITableViewController {
         // Fetches the appropriate trilha for the data source layout.
         let trilha = trilhasArray[indexPath.row]
         
+        let urlImagem = (trilha.usuario?.urlImage!)!
+        
+        print(urlImagem)
         
         cell.tituloTrilhaLabel.text = trilha.titulo
         cell.dataTrilhaLabel.text = trilha.dataFormatada
         cell.nomeUsuarioLabel.text = trilha.usuario?.nome
-        cell.photoImageView.image =  utilImagem.achaImagemPorMatricula(String(trilha.usuario!.matricula!))
+        cell.photoImageView.setUrl(urlImagem )
+        
+        cell.photoImageView.layer.cornerRadius = cell.photoImageView.frame.size.height/2
+        cell.photoImageView.layer.masksToBounds = false
+        cell.photoImageView.clipsToBounds = true
         
         return cell
     }

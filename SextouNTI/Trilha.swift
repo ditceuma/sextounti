@@ -70,7 +70,7 @@ public class Trilha {
         let dictionary = NSMutableDictionary()
         
         dictionary.setValue(self.codigo, forKey: "codigo")
-        dictionary.setValue(self.usuario?.dictionaryRepresentation(), forKey: "usuario")
+        dictionary.setValue(self.usuario, forKey: "usuario")
         dictionary.setValue(self.titulo, forKey: "titulo")
         dictionary.setValue(self.sobre, forKey: "sobre")
         

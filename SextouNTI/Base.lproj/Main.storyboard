@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="-556.5" y="262.5"/>
         </scene>
-        <!--Trilha Table View Controller-->
+        <!--Trilhas-->
         <scene sceneID="ZKa-No-bQk">
             <objects>
                 <tableViewController id="6Hj-Nj-yMW" customClass="TrilhaTableViewController" customModule="SextouNTI" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,20 +74,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JhJ-19-6hh">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="67"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="67" id="Irp-FE-PZp"/>
-                                                <constraint firstAttribute="width" constant="90" id="kwZ-FB-IBd"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYf-U0-Nn4">
-                                            <rect key="frame" x="0.0" y="70" width="90" height="19"/>
+                                            <rect key="frame" x="0.0" y="70" width="86" height="19"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="90" id="5WU-HH-Lhd"/>
+                                                <constraint firstAttribute="width" constant="86" id="5WU-HH-Lhd"/>
                                                 <constraint firstAttribute="height" constant="19" id="vVf-cp-DwJ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -110,15 +103,22 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JhJ-19-6hh" customClass="DownloadImageView" customModule="SextouNTI" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="0.0" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="Irp-FE-PZp"/>
+                                                <constraint firstAttribute="width" constant="70" id="kwZ-FB-IBd"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Nve-eE-yk0" firstAttribute="trailing" secondItem="UwY-f2-h5I" secondAttribute="trailingMargin" id="3Zv-7q-pDk"/>
                                         <constraint firstItem="1Fk-jg-Oc2" firstAttribute="trailing" secondItem="UwY-f2-h5I" secondAttribute="trailingMargin" id="DtW-GC-Vv1"/>
                                         <constraint firstItem="Nve-eE-yk0" firstAttribute="top" secondItem="UwY-f2-h5I" secondAttribute="topMargin" id="Tz9-8O-QOb"/>
-                                        <constraint firstItem="TYf-U0-Nn4" firstAttribute="top" secondItem="JhJ-19-6hh" secondAttribute="bottom" constant="3" id="Xgp-k8-tda"/>
-                                        <constraint firstItem="Nve-eE-yk0" firstAttribute="leading" secondItem="JhJ-19-6hh" secondAttribute="trailing" constant="8" id="ZiS-fK-slO"/>
+                                        <constraint firstItem="TYf-U0-Nn4" firstAttribute="top" secondItem="JhJ-19-6hh" secondAttribute="bottom" id="Xgp-k8-tda"/>
+                                        <constraint firstItem="Nve-eE-yk0" firstAttribute="leading" secondItem="JhJ-19-6hh" secondAttribute="trailing" constant="20" id="ZiS-fK-slO"/>
                                         <constraint firstItem="1Fk-jg-Oc2" firstAttribute="top" secondItem="Nve-eE-yk0" secondAttribute="bottom" constant="13" id="dv6-51-b9A"/>
-                                        <constraint firstItem="JhJ-19-6hh" firstAttribute="leading" secondItem="UwY-f2-h5I" secondAttribute="leadingMargin" constant="-8" id="rfH-Hw-4Aq"/>
+                                        <constraint firstItem="JhJ-19-6hh" firstAttribute="leading" secondItem="UwY-f2-h5I" secondAttribute="leadingMargin" id="rfH-Hw-4Aq"/>
                                         <constraint firstItem="JhJ-19-6hh" firstAttribute="top" secondItem="UwY-f2-h5I" secondAttribute="topMargin" constant="-8" id="sWu-xN-6lE"/>
                                         <constraint firstItem="TYf-U0-Nn4" firstAttribute="leading" secondItem="UwY-f2-h5I" secondAttribute="leadingMargin" constant="-8" id="uVf-eW-c3H"/>
                                     </constraints>
@@ -138,7 +138,7 @@
                             <outlet property="delegate" destination="6Hj-Nj-yMW" id="j0g-BU-zTR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PiP-FI-aPt"/>
+                    <navigationItem key="navigationItem" title="Trilhas" id="PiP-FI-aPt"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -222,13 +222,6 @@
                                     <action selector="likeAction:" destination="PMC-U7-p4M" eventType="touchUpInside" id="CsE-DZ-u3n"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="nophoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UiL-3f-5dZ">
-                                <rect key="frame" x="122" y="90" width="77" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Hpn-Fd-ELW"/>
-                                    <constraint firstAttribute="height" constant="79" id="aXm-mt-LiA"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V53-AO-8js">
                                 <rect key="frame" x="112" y="392" width="86" height="32"/>
                                 <color key="backgroundColor" red="0.11604809015989304" green="0.46953380107879639" blue="0.57702547311782837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -246,16 +239,23 @@
                                     <segue destination="GLg-kL-Pga" kind="show" identifier="segueForComents" id="FGa-ak-rb8"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="UiL-3f-5dZ" customClass="DownloadImageView" customModule="SextouNTI" customModuleProvider="target">
+                                <rect key="frame" x="120" y="93" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Hpn-Fd-ELW"/>
+                                    <constraint firstAttribute="height" constant="80" id="aXm-mt-LiA"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.13386004209999999" green="0.43603398529999998" blue="0.54445112179999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Yel-WE-n2I" firstAttribute="trailing" secondItem="Xbi-cX-sWe" secondAttribute="trailingMargin" id="7oe-xj-1aw"/>
-                            <constraint firstItem="V53-AO-8js" firstAttribute="centerX" secondItem="Xbi-cX-sWe" secondAttribute="centerX" id="AM8-gd-8Si"/>
+                            <constraint firstItem="V53-AO-8js" firstAttribute="centerX" secondItem="Xbi-cX-sWe" secondAttribute="centerX" constant="-5" id="AM8-gd-8Si"/>
                             <constraint firstItem="1JI-Z1-Iyc" firstAttribute="leading" secondItem="V53-AO-8js" secondAttribute="trailing" constant="8" id="Ez3-aX-BkX"/>
                             <constraint firstItem="A3W-OM-8GR" firstAttribute="leading" secondItem="Xbi-cX-sWe" secondAttribute="leadingMargin" id="Pss-yk-p18"/>
                             <constraint firstItem="1JI-Z1-Iyc" firstAttribute="top" secondItem="Yel-WE-n2I" secondAttribute="bottom" constant="8" id="R3u-da-zz3"/>
                             <constraint firstItem="Yel-WE-n2I" firstAttribute="leading" secondItem="Xbi-cX-sWe" secondAttribute="leadingMargin" id="USz-Lq-Qhq"/>
-                            <constraint firstItem="UiL-3f-5dZ" firstAttribute="top" secondItem="LWw-0j-9hn" secondAttribute="bottom" constant="26" id="WUd-ss-pGv"/>
+                            <constraint firstItem="UiL-3f-5dZ" firstAttribute="top" secondItem="LWw-0j-9hn" secondAttribute="bottom" constant="29" id="WUd-ss-pGv"/>
                             <constraint firstItem="Yel-WE-n2I" firstAttribute="top" secondItem="omT-ZP-iOc" secondAttribute="bottom" constant="8" id="XjW-Fy-xE2"/>
                             <constraint firstItem="V53-AO-8js" firstAttribute="leading" secondItem="siJ-AA-pNg" secondAttribute="trailing" constant="8" id="YYG-T9-uf6"/>
                             <constraint firstItem="V53-AO-8js" firstAttribute="top" secondItem="Yel-WE-n2I" secondAttribute="bottom" constant="8" id="cET-hj-cRP"/>
@@ -350,8 +350,8 @@
                                     <action selector="logoutUser:" destination="857-Bl-tim" eventType="touchUpInside" id="yPV-kc-4nK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ArW-Wf-UMi">
-                                <rect key="frame" x="60" y="105" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ArW-Wf-UMi">
+                                <rect key="frame" x="60" y="98" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="QXn-Y3-dIY"/>
                                     <constraint firstAttribute="width" constant="200" id="hsj-5B-sSj"/>
@@ -362,8 +362,8 @@
                         <constraints>
                             <constraint firstItem="tDd-06-YqJ" firstAttribute="centerX" secondItem="Vct-Cn-4Pj" secondAttribute="centerX" constant="6" id="BnL-Kr-bud"/>
                             <constraint firstItem="Bh6-HW-SQs" firstAttribute="centerX" secondItem="Vct-Cn-4Pj" secondAttribute="centerX" constant="6.5" id="Dor-td-DrY"/>
-                            <constraint firstItem="ArW-Wf-UMi" firstAttribute="top" secondItem="nGH-jO-WhO" secondAttribute="bottom" constant="41" id="WSp-xs-PWD"/>
-                            <constraint firstItem="Bh6-HW-SQs" firstAttribute="top" secondItem="ArW-Wf-UMi" secondAttribute="bottom" constant="23" id="Wfo-zS-hnz"/>
+                            <constraint firstItem="ArW-Wf-UMi" firstAttribute="top" secondItem="nGH-jO-WhO" secondAttribute="bottom" constant="34" id="WSp-xs-PWD"/>
+                            <constraint firstItem="Bh6-HW-SQs" firstAttribute="top" secondItem="ArW-Wf-UMi" secondAttribute="bottom" constant="30" id="Wfo-zS-hnz"/>
                             <constraint firstItem="ArW-Wf-UMi" firstAttribute="centerX" secondItem="Vct-Cn-4Pj" secondAttribute="centerX" id="XUb-SL-MGK"/>
                             <constraint firstItem="tDd-06-YqJ" firstAttribute="top" secondItem="Bh6-HW-SQs" secondAttribute="bottom" constant="8" id="afI-tG-2b5"/>
                             <constraint firstItem="7JM-83-hYu" firstAttribute="top" secondItem="tDd-06-YqJ" secondAttribute="bottom" constant="46" id="b99-bK-GQv"/>
@@ -375,6 +375,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnLogout" destination="7JM-83-hYu" id="4Pr-rn-3ef"/>
                         <outlet property="uiimvProfilePic" destination="ArW-Wf-UMi" id="pd3-pq-OCU"/>
                         <outlet property="uilEmail" destination="tDd-06-YqJ" id="sD3-nv-CS2"/>
                         <outlet property="uilName" destination="Bh6-HW-SQs" id="rtn-EY-bOa"/>

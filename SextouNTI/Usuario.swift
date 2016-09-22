@@ -18,6 +18,7 @@ public class Usuario {
     public var email : String?
     public var senha : String?
     public var perfil : Perfil?
+    public var urlImage : String?
     
     /**
      Returns an array of models based on given dictionary.
@@ -56,6 +57,7 @@ public class Usuario {
         nome = dictionary["nome"] as? String
         email = dictionary["email"] as? String
         senha = dictionary["senha"] as? String
+        urlImage = dictionary["urlImage"] as? String
         if (dictionary["perfil"] != nil) { perfil = Perfil(dictionary: dictionary["perfil"] as! NSDictionary) }
     }
     
@@ -78,6 +80,7 @@ public class Usuario {
         dictionary.setValue(self.nome, forKey: "nome")
         dictionary.setValue(self.email, forKey: "email")
         dictionary.setValue(self.senha, forKey: "senha")
+        dictionary.setValue(self.urlImage, forKey: "urlImage")
         dictionary.setValue(self.perfil?.dictionaryRepresentation(), forKey: "perfil")
         
         return dictionary

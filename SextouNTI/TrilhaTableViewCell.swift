@@ -18,7 +18,7 @@ class TrilhaTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nomeUsuarioLabel: UILabel!
     
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: DownloadImageView!
     
     
 }

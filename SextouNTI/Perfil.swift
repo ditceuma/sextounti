@@ -16,6 +16,10 @@ public class Perfil {
     public var nome : String?
     public var descricao : String?
     
+    required public init?() {
+        
+    }
+    
     /**
      Returns an array of models based on given dictionary.
      

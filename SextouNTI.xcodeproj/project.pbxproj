@@ -36,6 +36,9 @@
 		9C3165BA1D87BA320026BD08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */; };
 		9C37E4D31D41C09500D1182E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */; };
 		9C4DB7901D33D7DB00D4AB81 /* rightarrowwite25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */; };
+		9C7707AC1D9309EF0017FB91 /* DownLoadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7707AB1D9309EF0017FB91 /* DownLoadImageView.swift */; };
+		9C7707B01D931B960017FB91 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7707AF1D931B960017FB91 /* StringUtils.swift */; };
+		9C7707B21D932ADF0017FB91 /* FabricaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7707B11D932ADF0017FB91 /* FabricaModels.swift */; };
 		9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9740F91D50467C00D01F70 /* UtilImagem.swift */; };
 		9CD0A4C91D32C994005806D1 /* nophoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4C81D32C994005806D1 /* nophoto.jpg */; };
 		9CD0A4CB1D32EEE0005806D1 /* bntRightArrow25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */; };
@@ -89,6 +92,9 @@
 		9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
 		9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightarrowwite25x25.png; path = SextouNTI/rightarrowwite25x25.png; sourceTree = "<group>"; };
+		9C7707AB1D9309EF0017FB91 /* DownLoadImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadImageView.swift; sourceTree = "<group>"; };
+		9C7707AF1D931B960017FB91 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		9C7707B11D932ADF0017FB91 /* FabricaModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabricaModels.swift; sourceTree = "<group>"; };
 		9C9740F91D50467C00D01F70 /* UtilImagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilImagem.swift; sourceTree = "<group>"; };
 		9CD0A4C81D32C994005806D1 /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nophoto.jpg; path = SextouNTI/nophoto.jpg; sourceTree = "<group>"; };
 		9CD0A4CA1D32EEE0005806D1 /* bntRightArrow25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bntRightArrow25x25.png; path = SextouNTI/bntRightArrow25x25.png; sourceTree = "<group>"; };
@@ -190,6 +196,9 @@
 		1F9F72311CE93F1D0010CF96 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				9C7707B11D932ADF0017FB91 /* FabricaModels.swift */,
+				9C7707AF1D931B960017FB91 /* StringUtils.swift */,
+				9C7707AB1D9309EF0017FB91 /* DownLoadImageView.swift */,
 				9C148B531D52353F00C9A73E /* Reachability.swift */,
 				9C9740F91D50467C00D01F70 /* UtilImagem.swift */,
 				1F9F72371CE96D1D0010CF96 /* SextouNTI-Bridging-Header.h */,
@@ -431,12 +440,15 @@
 			files = (
 				484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */,
 				1F9F72331CE93F720010CF96 /* MD5.swift in Sources */,
+				9C7707AC1D9309EF0017FB91 /* DownLoadImageView.swift in Sources */,
 				1F96EF011CD7A28400216741 /* Comentario.swift in Sources */,
 				1F96EEE21CD79EF400216741 /* LoginViewController.swift in Sources */,
 				484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */,
 				9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */,
 				9C148B541D52353F00C9A73E /* Reachability.swift in Sources */,
+				9C7707B01D931B960017FB91 /* StringUtils.swift in Sources */,
 				9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */,
+				9C7707B21D932ADF0017FB91 /* FabricaModels.swift in Sources */,
 				1F348C451CEA039A00BDE0A9 /* TrilhaTableViewCell.swift in Sources */,
 				1F96EEE01CD79EF400216741 /* AppDelegate.swift in Sources */,
 				1F143E611D012F97007B7C46 /* DetalheTrilhaViewController.swift in Sources */,
@@ -589,7 +601,7 @@
 					"/Users/flaviorabelo/Documents/FacebookSDKs-iOS-4.14.0",
 				);
 				INFOPLIST_FILE = SextouNTI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fagutapp.SextouNTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,7 +623,7 @@
 					"/Users/flaviorabelo/Documents/FacebookSDKs-iOS-4.14.0",
 				);
 				INFOPLIST_FILE = SextouNTI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fagutapp.SextouNTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -14,7 +14,7 @@ class DetalheTrilhaViewController: UIViewController {
     var trilha = Trilha()
     
     // MARK: Properties
-    @IBOutlet weak var imagemUsuario: UIImageView!
+    @IBOutlet weak var imagemUsuario: DownloadImageView!
     @IBOutlet weak var tituloTrilha: UILabel!
     @IBOutlet weak var decricaoTrilha: UILabel!
     @IBOutlet weak var numeroComentariosTrilha: UILabel!
@@ -24,9 +24,14 @@ class DetalheTrilhaViewController: UIViewController {
 
         let utilImagem = UtilImagem()
         
+        self.imagemUsuario.layer.cornerRadius = self.imagemUsuario.frame.size.height/2
+        self.imagemUsuario.layer.masksToBounds = false
+        self.imagemUsuario.clipsToBounds = true
+        
         self.tituloTrilha.text = trilha?.titulo
         self.decricaoTrilha.text = trilha?.sobre
-        self.imagemUsuario.image = utilImagem.achaImagemPorMatricula(String(trilha!.usuario!.matricula!))
+        self.imagemUsuario.setUrl((trilha!.usuario?.urlImage!)!)
+
     }
 
     override func didReceiveMemoryWarning() {
