@@ -9,6 +9,7 @@
 import UIKit
 
 import Alamofire
+import FirebaseDatabase
 
 class ComentarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
@@ -17,6 +18,8 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
     var comentariosArray: [Comentario] = []
     
     var trilha: Trilha?
+    
+    let ref = FIRDatabase.database().reference()
     
     
     @IBOutlet weak var tableViewComentarios: UITableView!
@@ -29,43 +32,17 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func enviaComentarioButton(sender: AnyObject) {
         
-        
         //  prepare json data
         let coment = Comentario()
         
-        var parametros: [String: AnyObject] = [:]
-        
-        coment!.trilha = trilha
-        coment!.usuario = usuarioLogin
+        coment!.codigoTrilha = trilha?.codigo
+        coment!.usuarioSocial = usuarioLogin
         coment!.descricao = comentarioTexField.text!
         
         let comentDic = coment?.dictionaryRepresentation()
+        
+        self.ref.child("comentarios").childByAutoId().setValue(comentDic)
 
-        
-        
-        do {
-            let JSONData = try NSJSONSerialization.dataWithJSONObject(comentDic!, options: NSJSONWritingOptions.PrettyPrinted)
-            let jsonString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)! as String
-            
-            parametros = ["token": "99678f8f11be783c5e33c11008ba6772", "comentarioJson": jsonString]
-            
-        } catch let jsonError as NSError {
-           print( "JSONError: \( jsonError.localizedDescription )")
-        }
-        
-
-        
-        Alamofire.request(.POST, "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/addComment?", parameters: parametros).responseJSON {
-            result in
-            
-            if result.response?.statusCode == 200 {
-                self.comentariosArray.append(coment!)
-                self.tableViewComentarios.reloadData()
-                print("Comentario salvo!")
-                
-            }
-
-        }
 
         
     }
@@ -73,55 +50,54 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref.observeEventType(.Value, withBlock: { (snapshot) in
+            
+            //print(snapshot.value)
+            self.comentariosArray.removeAll()
+            
+            self.carregaComentarios(snapshot.value as! NSDictionary)
+            self.tableViewComentarios.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
 
+    }
+    
+    func carregaComentarios(snapshot: NSDictionary) {
+        
+        let fabricaModels = FabricaModels()
+        
+        if let comentarios = (snapshot["comentarios"]  as? NSDictionary)  {
+        
+            print(comentarios)
+        
+            for (_, comentario) in comentarios  {
+                let comentarioLocal = Comentario()
+                
+                if (comentario["FKTRILHA"]) != nil {
+                    if ((comentario["FKTRILHA"])! as? Int) == self.trilha?.codigo {
+                        comentarioLocal?.codigo =  comentario["CODIGO"] as? Int
+                        comentarioLocal?.descricao =  comentario["DESCRICAO"] as? String
+                        comentarioLocal?.dataFormatada =  comentario["DATA"] as? String
+                        comentarioLocal?.codigoTrilha =  trilha?.codigo
+                        comentarioLocal?.usuarioSocial =  fabricaModels.carregaUsuario_social(snapshot,  uid: (comentario["FKUSUARIO"] as? String)!)      // fabricaModels.retornaUsuarioPorCodigo(trilha["FK_USUARIO"] as! Int)
+                        self.comentariosArray.append(comentarioLocal!)
+                    }
+                }
+                
+            }
+        }
+ 
+    
     }
     
 
 
     override func viewWillAppear(animated: Bool) {
-        
-        let http = NSURLSession.sharedSession()
-        
-        let url = NSURL( string: "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchComments?token=99678f8f11be783c5e33c11008ba6772&trilhaCodigo=" + String(trilha!.codigo!))!
-        
-        let task = http.dataTaskWithURL(url) {(data, response, error ) -> Void in
-            
-            if(error != nil) {
-                print("URL Error!!")
-            } else {
-                do {
-                    let object = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) // as! NSArray
-                    
-                    if object.isKindOfClass(NSArray) {
-                        dispatch_sync(dispatch_get_main_queue(), {
-                            self.comentariosArray = Comentario.modelsFromDictionaryArray(object as! NSArray)
-                            print(object)
-                            self.tableViewComentarios.reloadData()
-                        })
-                    }
-                    
-                } catch let jsonError as NSError {
-                    print( "JSONError: \( jsonError.localizedDescription )")
-                }
-            }
-        }
-        task.resume()
-        
-        
-        
-//        Alamofire.request(.GET, "http://www.ceuma.br/ServicosOnlineDev/servicosSextouNTI/searchComments?token=99678f8f11be783c5e33c11008ba6772&trilhaCodigo=").responseJSON {
-//            result in
-//            
-//            if let object = result.data {
-//                if object.isKindOfClass(NSArray) {
-//                    dispatch_sync(dispatch_get_main_queue(), {
-//                        self.comentariosArray = Comentario.modelsFromDictionaryArray(object as! NSArray)
-//                        print(object)
-//                        self.tableViewComentarios.reloadData()
-//                    })
-//                }
-//            }
-//        }
         
             
             
@@ -157,8 +133,6 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let utilImagem = UtilImagem()
-        
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "ComentTableViewCell"
         
@@ -167,11 +141,17 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
         // Fetches the appropriate trilha for the data source layout.
         let comentario = comentariosArray[indexPath.row]
         
+        print(comentario.usuarioSocial!.urlImage!)
         
-        cell.nomeUsuarioLabel.text = comentario.usuario?.nome
+        cell.nomeUsuarioLabel.text = comentario.usuarioSocial?.nome
         cell.comentarioLabel.text = comentario.descricao
         cell.dataComentLabel.text = comentario.dataFormatada
-        cell.imagem.image = utilImagem.achaImagemPorMatricula(String(comentario.usuario!.matricula!))
+        cell.imagem.setUrl(comentario.usuarioSocial!.urlImage!)
+        
+        cell.imagem.layer.cornerRadius = cell.imagem.frame.size.height/2
+        cell.imagem.layer.masksToBounds = false
+        cell.imagem.clipsToBounds = true
+
         
         return cell
     }

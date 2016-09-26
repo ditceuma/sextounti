@@ -44,7 +44,7 @@ class TrilhaTableViewController: UITableViewController {
     
     func carregaTrilhas(snapshot: NSDictionary) {
         
-        
+        let fabricaModels = FabricaModels()
         
         let trilhas = snapshot["trilhas"] as! NSArray
         
@@ -57,7 +57,7 @@ class TrilhaTableViewController: UITableViewController {
             trilhaLocal?.titulo =  trilha["TITULO"] as? String
             trilhaLocal?.dataFormatada = trilha["DATA_EVENTO"] as? String
             trilhaLocal?.sobre = trilha["SOBRE"] as? String
-            trilhaLocal?.usuario =  carregaUsuario(snapshot,  codigo: (trilha["FK_USUARIO"] as? Int)!)      // fabricaModels.retornaUsuarioPorCodigo(trilha["FK_USUARIO"] as! Int)
+            trilhaLocal?.usuario =  fabricaModels.carregaUsuario(snapshot,  codigo: (trilha["FK_USUARIO"] as? Int)!)      // fabricaModels.retornaUsuarioPorCodigo(trilha["FK_USUARIO"] as! Int)
             
             //print(trilhaLocal)
             
@@ -67,29 +67,6 @@ class TrilhaTableViewController: UITableViewController {
         
     }
     
-    func carregaUsuario(snapshot: NSDictionary, codigo: Int ) -> Usuario {
-        
-        let usuarios = snapshot["usuarios"] as! NSArray
-        
-        let usuarioLocal = Usuario()
-
-        for usuario in usuarios {
-            
-            
-            if String(usuario["CODIGO"] as! Int) == String(codigo) {
-                usuarioLocal?.codigo = usuario["CODIGO"] as? Int
-                usuarioLocal?.nome = usuario["NOME"] as? String
-                usuarioLocal?.email = usuario["EMAIL"] as? String
-                usuarioLocal?.matricula = usuario["MATRICULA"] as? Int
-                usuarioLocal?.urlImage = usuario["IMAGEM"] as? String
- 
-            }
-            
-        }
-        
-        return usuarioLocal!
-        
-    }
     
     
     override func viewDidAppear(animated: Bool) {
@@ -129,8 +106,6 @@ class TrilhaTableViewController: UITableViewController {
         let trilha = trilhasArray[indexPath.row]
         
         let urlImagem = (trilha.usuario?.urlImage!)!
-        
-        print(urlImagem)
         
         cell.tituloTrilhaLabel.text = trilha.titulo
         cell.dataTrilhaLabel.text = trilha.dataFormatada

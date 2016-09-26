@@ -12,7 +12,7 @@ class ComentTableViewCell: UITableViewCell {
 
     // MARK: Properties
     
-    @IBOutlet weak var imagem: UIImageView!
+    @IBOutlet weak var imagem: DownloadImageView!
 
     @IBOutlet weak var nomeUsuarioLabel: UILabel!
     

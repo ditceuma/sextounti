@@ -9,9 +9,11 @@
 import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
  
-var usuarioLogin:Usuario?
+
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
@@ -30,6 +32,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if let user = user {
                 // User is signed in.
+                let name = user.displayName
+                let email = user.email
+                let photoUrl = user.photoURL
+                let uid = user.uid;
+                
+                usuarioLogin.uid = uid
+                usuarioLogin.nome = name
+                usuarioLogin.email = email
+                usuarioLogin.urlImage = photoUrl?.absoluteString
+                
                 // move the user to the home screen
                 let mainStoreBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 
@@ -80,6 +92,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
                 print("User Logged in Firebase")
                 
+                self.gravaUsuario()
+                
             }
         }
     }
@@ -110,13 +124,109 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }else{
     
-            usuarioLogin = Usuario(dictionary: object)
+            usuarioLogin = UsuarioSocial(dictionary: object)!
 
             self.performSegueWithIdentifier("segueForTrilhas", sender: self)
 
         
         }
         
+    }
+    
+    func gravaUsuario() {
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            let name = user.displayName
+            let email = user.email
+            let photoUrl = user.photoURL
+            let uid = user.uid;
+            
+            var imagemPerfil: UIImage?
+            
+            usuarioLogin.uid = uid
+            usuarioLogin.nome = name
+            usuarioLogin.email = email
+            
+            // Get a reference to the storage service, using the default Firebase App
+            let storage = FIRStorage.storage()
+            
+            // Create a storage reference from our storage service
+            let storageRef = storage.referenceForURL("gs://sextou-nti.appspot.com")
+            
+            // Create a reference to the file you want to upload
+            let profilePicRef = storageRef.child(uid + "/profile_pic.jpg")
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            profilePicRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
+                
+                if (error != nil) {
+                    print("Unable to download image")
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    imagemPerfil = UIImage(data: data!)!
+                }
+            }
+            
+            if imagemPerfil == nil {
+                
+                let profilePic = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":300, "width":"300", "redirect":false], HTTPMethod: "GET")
+                
+                profilePic.startWithCompletionHandler({(connection, result, error) -> Void in
+                    
+                    if (error == nil) {
+                        
+                        let dictionary = result as? NSDictionary
+                        let data = dictionary?.objectForKey("data")
+                        
+                        let urlPic = (data?.objectForKey("url"))! as! String
+                        if let imageData = NSData(contentsOfURL: NSURL(string: urlPic)!) {
+                            
+                            
+                            // Upload the file to the path "images/rivers.jpg"
+                            let uploadTask = profilePicRef.putData(imageData, metadata: nil) { metadata, error in
+                                
+                                if (error == nil) {
+                                    // Metadata contains file metadata such as size, content-type, and download URL.
+                                    let downloadURL = metadata!.downloadURL()
+                                    
+                                    usuarioLogin.urlImage = downloadURL!.absoluteString
+                                    
+                                    let dataBaseRef = FIRDatabase.database().reference()
+                                    
+                                    let userDic = usuarioLogin.dictionaryRepresentation()
+                                    
+                                    dataBaseRef.child("usuario_social").child(usuarioLogin.uid!).setValue(userDic)
+
+                                    let changeRequest = user.profileChangeRequest()
+                                    
+                                    changeRequest.photoURL = downloadURL
+                                    changeRequest.commitChangesWithCompletion { error in
+                                        if let error = error {
+                                            print("unable to update photoURL!")
+                                        } else {
+                                            print("photo updated!")
+                                        }
+                                    }
+
+                                    
+                                } else {
+                                    print("Error in downloadImage")
+                                }
+                            }
+                            
+                            imagemPerfil = UIImage(data: imageData)
+                            
+                        }
+                        
+                    }
+                    
+                })
+            }
+            
+            
+        } else {
+            // No user is signed in.
+        }
     }
       
 

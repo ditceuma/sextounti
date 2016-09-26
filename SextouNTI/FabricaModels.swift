@@ -12,63 +12,57 @@ import FirebaseDatabase
 class FabricaModels {
     
 
-    func retornaUsuarioPorCodigo(codigo: Int) -> Usuario {
+    func carregaUsuario(snapshot: NSDictionary, codigo: Int ) -> Usuario {
         
-        let ref = FIRDatabase.database().reference()
-        let usuario = Usuario()
-
-        ref.child("usuarios").child("CODIGO").queryEqualToValue("2").observeEventType(.Value) { (snapshot) in
-            print(snapshot.value)
+        let usuarios = snapshot["usuarios"] as! NSArray
+        
+        let usuarioLocal = Usuario()
+        
+        for usuario in usuarios {
+            
+            
+            if String(usuario["CODIGO"] as! Int) == String(codigo) {
+                usuarioLocal?.codigo = usuario["CODIGO"] as? Int
+                usuarioLocal?.nome = usuario["NOME"] as? String
+                usuarioLocal?.email = usuario["EMAIL"] as? String
+                usuarioLocal?.matricula = usuario["MATRICULA"] as? Int
+                usuarioLocal?.urlImage = usuario["IMAGEM"] as? String
+                
+            }
+            
         }
         
-        //observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            
-//            // Get user value
-//            let usuarioDict = snapshot.value as! NSDictionary
-//            print(usuarioDict)
-//            
-//            usuario!.codigo = usuarioDict["CODIGO"] as? Int
-//            usuario!.email = usuarioDict["EMAIL"] as? String
-//            usuario!.urlImage = usuarioDict["IMAGEM"] as? String
-//            usuario!.matricula = usuarioDict["MATRICULA"] as? Int
-//            usuario!.nome = usuarioDict["NOME"] as? String
-//            usuario!.senha = usuarioDict["SENHA"] as? String
-//            usuario!.perfil = self.retornaPerfilPorCodigo(usuarioDict["FK_PERFIL"] as! Int)
-//
-//            
-//            // ...
-//        }) { (error) in
-//            print(error.localizedDescription)
-//        }
+        return usuarioLocal!
         
-        return usuario!
-
     }
     
-    func retornaPerfilPorCodigo(codigo: Int) -> Perfil {
+    func carregaUsuario_social(snapshot: NSDictionary, uid: String ) -> UsuarioSocial {
         
-        let ref = FIRDatabase.database().reference()
-        let perfil = Perfil()
+        let usuarioLocal = UsuarioSocial()
+
         
-        ref.child("perfis").child(String(codigo)).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        if let usuarios = (snapshot["usuario_social"] as?  NSDictionary) {
+        
             
-            // Get user value
-            let perfilDic = snapshot.value as! NSDictionary
-            print(perfilDic)
-            
-            perfil!.codigo = perfilDic["CODIGO"] as? Int
-            perfil!.descricao = perfilDic["DESCRICAO"] as? String
-            perfil!.nome = perfilDic["NOME"] as? String
-            
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
+            for (_,usuario) in usuarios {
+                
+                print(usuario)
+                
+                if (usuario["uid"] as? String) == uid {
+                    usuarioLocal?.uid = usuario["uid"] as? String
+                    usuarioLocal?.nome = usuario["nome"] as? String
+                    usuarioLocal?.email = usuario["email"] as? String
+                    usuarioLocal?.urlImage = usuario["urlImage"] as? String
+                    
+                }
+                
+            }
         }
         
-        return perfil!
+        return usuarioLocal!
         
     }
+
     
     
     
