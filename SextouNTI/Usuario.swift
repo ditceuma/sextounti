@@ -6,7 +6,6 @@
 //  Copyright © 2016 br.com.fagutapp. All rights reserved.
 //
 
-import UIKit
 import Foundation
 
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */

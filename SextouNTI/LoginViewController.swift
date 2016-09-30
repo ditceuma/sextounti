@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 
             } else {
                 
-                self.loginButton.center = CGPointMake(self.view.center.x, self.view.center.y + 200)
+                self.loginButton.center = CGPointMake(self.view.center.x, self.view.frame.height - 100)
                 self.loginButton.readPermissions = ["public_profile", "email", "user_friends"]
                 self.loginButton.delegate = self
                 
@@ -102,15 +102,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User did Logout")
     }
     
-    // MARK: Tratamento de teclado Libera teclado
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 
     
     func CarregaUsuario(object: NSDictionary) {
@@ -146,6 +137,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             usuarioLogin.uid = uid
             usuarioLogin.nome = name
             usuarioLogin.email = email
+            usuarioLogin.urlImage = photoUrl?.absoluteString
             
             // Get a reference to the storage service, using the default Firebase App
             let storage = FIRStorage.storage()
@@ -183,7 +175,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             
                             
                             // Upload the file to the path "images/rivers.jpg"
-                            let uploadTask = profilePicRef.putData(imageData, metadata: nil) { metadata, error in
+                            _ = profilePicRef.putData(imageData, metadata: nil) { metadata, error in
                                 
                                 if (error == nil) {
                                     // Metadata contains file metadata such as size, content-type, and download URL.
@@ -201,7 +193,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                     
                                     changeRequest.photoURL = downloadURL
                                     changeRequest.commitChangesWithCompletion { error in
-                                        if let error = error {
+                                        if error != nil {
                                             print("unable to update photoURL!")
                                         } else {
                                             print("photo updated!")

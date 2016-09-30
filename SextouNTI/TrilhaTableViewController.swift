@@ -48,15 +48,48 @@ class TrilhaTableViewController: UITableViewController {
         
         let trilhas = snapshot["trilhas"] as! NSArray
         
-        //print(trilhas)
+        
         
         for trilha in trilhas {
             let trilhaLocal = Trilha()
+            var likesCount = 0
+            var comentariosCount = 0
             
             trilhaLocal?.codigo =  trilha["CODIGO"] as? Int
             trilhaLocal?.titulo =  trilha["TITULO"] as? String
             trilhaLocal?.dataFormatada = trilha["DATA_EVENTO"] as? String
             trilhaLocal?.sobre = trilha["SOBRE"] as? String
+            
+            // Carrega curtidas
+            if let likes = snapshot["likes"] as? NSDictionary {
+                
+                for (_, like) in likes {
+                    
+                    if (like.objectForKey("FKTRILHA")! as! NSObject) == trilhaLocal?.codigo {
+                        likesCount = likesCount + 1
+                    }
+                }
+                trilhaLocal?.likes = likesCount
+                
+            } else {
+                trilhaLocal?.likes = 0
+            }
+            
+            // Carrega Comentarios
+            if let comentarios = snapshot["comentarios"] as? NSDictionary {
+                
+                for (_, comentario) in comentarios {
+                    
+                    if (comentario.objectForKey("FKTRILHA")! as! NSObject) == trilhaLocal?.codigo {
+                        comentariosCount = comentariosCount + 1
+                    }
+                }
+                trilhaLocal?.comentarios = comentariosCount
+                
+            } else {
+                trilhaLocal?.comentarios = 0
+            }
+
             trilhaLocal?.usuario =  fabricaModels.carregaUsuario(snapshot,  codigo: (trilha["FK_USUARIO"] as? Int)!)      // fabricaModels.retornaUsuarioPorCodigo(trilha["FK_USUARIO"] as! Int)
             
             //print(trilhaLocal)
@@ -137,6 +170,7 @@ class TrilhaTableViewController: UITableViewController {
         let trilha = trilhasArray[path!.row]
         
         vc.trilha = trilha
+
         
     }
 

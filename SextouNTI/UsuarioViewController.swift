@@ -16,7 +16,7 @@ var usuarioLogin:UsuarioSocial = UsuarioSocial()!
 class UsuarioViewController: UIViewController {
     
     @IBOutlet weak var uilName: UILabel!
-    @IBOutlet weak var uiimvProfilePic: UIImageView!
+    @IBOutlet weak var uiimvProfilePic: DownloadImageView!
     @IBOutlet weak var uilEmail: UILabel!
     @IBOutlet weak var btnLogout: UIButton!
     
@@ -38,32 +38,12 @@ class UsuarioViewController: UIViewController {
             let name = user.displayName
             let email = user.email
             let photoUrl = user.photoURL
-            let uid = user.uid;
             
             self.uilName.text = name
             self.uilEmail.text = email
             
+            self.uiimvProfilePic.setUrl((photoUrl?.absoluteString)!)
             
-            // Get a reference to the storage service, using the default Firebase App
-            let storage = FIRStorage.storage()
-            
-            // Create a storage reference from our storage service
-            let storageRef = storage.referenceForURL("gs://sextou-nti.appspot.com")
-            
-            // Create a reference to the file you want to upload
-            let profilePicRef = storageRef.child(uid + "/profile_pic.jpg")
-
-            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-            profilePicRef.dataWithMaxSize(1 * 1024 * 1024) { (data, error) -> Void in
-                
-                if (error != nil) {
-                    print("Unable to download image")
-                } else {
-                    // Data for "images/island.jpg" is returned
-                    self.uiimvProfilePic.image = UIImage(data: data!)
-                }
-            }
-                        
             
         } else {
             // No user is signed in.

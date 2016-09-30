@@ -15,6 +15,8 @@ public class Trilha {
     public var titulo : String?
     public var sobre : String?
     public var dataFormatada: String?
+    public var likes: Int?
+    public var comentarios: Int?
     
     /**
      Returns an array of models based on given dictionary.
@@ -53,6 +55,8 @@ public class Trilha {
         titulo = dictionary["titulo"] as? String
         sobre = dictionary["sobre"] as? String
         dataFormatada = dictionary["dataFormatada"] as? String
+        likes = dictionary["likes"] as? Int
+        comentarios = dictionary["comentarios"] as? Int
     }
     
     required public init?() {
@@ -73,6 +77,8 @@ public class Trilha {
         dictionary.setValue(self.usuario, forKey: "usuario")
         dictionary.setValue(self.titulo, forKey: "titulo")
         dictionary.setValue(self.sobre, forKey: "sobre")
+        dictionary.setValue(self.likes, forKey: "likes")
+        dictionary.setValue(self.comentarios, forKey: "comentarios")
         
         return dictionary
     }

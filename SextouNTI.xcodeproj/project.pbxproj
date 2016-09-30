@@ -31,6 +31,7 @@
 		1FC0F3DE1D0312FC001BB1BF /* LikeBnt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0F3DD1D0312FC001BB1BF /* LikeBnt.png */; };
 		484D105E1CEFC22800E129D6 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105D1CEFC22800E129D6 /* LoginInteractor.swift */; };
 		484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D105F1CEFCE3000E129D6 /* Alerta.swift */; };
+		9C0C408F1D9AFC93001219B9 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0C408E1D9AFC93001219B9 /* Like.swift */; };
 		9C148B541D52353F00C9A73E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C148B531D52353F00C9A73E /* Reachability.swift */; };
 		9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */; };
 		9C3165BA1D87BA320026BD08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */; };
@@ -88,6 +89,7 @@
 		484D105F1CEFCE3000E129D6 /* Alerta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		787697839C5334AC4B7B6183 /* Pods-SextouNTI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SextouNTI.release.xcconfig"; path = "Pods/Target Support Files/Pods-SextouNTI/Pods-SextouNTI.release.xcconfig"; sourceTree = "<group>"; };
 		868C36EDFA6681B244045865 /* Pods_SextouNTI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SextouNTI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0C408E1D9AFC93001219B9 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		9C148B531D52353F00C9A73E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentarioViewController.swift; sourceTree = "<group>"; };
 		9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				1F96EF061CD7A68300216741 /* Usuario.swift */,
 				9C7DF6361D9733A200D38515 /* UsuarioSocial.swift */,
 				1F18998C1CD8462E00A12A4B /* Perfil.swift */,
+				9C0C408E1D9AFC93001219B9 /* Like.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				1F96EEE21CD79EF400216741 /* LoginViewController.swift in Sources */,
 				484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */,
 				9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */,
+				9C0C408F1D9AFC93001219B9 /* Like.swift in Sources */,
 				9C148B541D52353F00C9A73E /* Reachability.swift in Sources */,
 				9C7707B01D931B960017FB91 /* StringUtils.swift in Sources */,
 				9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */,

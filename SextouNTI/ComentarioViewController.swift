@@ -28,24 +28,35 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
     
     
     
-    // MARK: Actions
+    // MARK: Actions 
     
     @IBAction func enviaComentarioButton(sender: AnyObject) {
         
         //  prepare json data
         let coment = Comentario()
         
+        let dataComentario = NSDate()
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+//        let locale = NSLocale(localeIdentifier: "pt_BR")
+//        dateFormatter.locale = locale
+        
         coment!.codigoTrilha = trilha?.codigo
         coment!.usuarioSocial = usuarioLogin
         coment!.descricao = comentarioTexField.text!
+        coment!.dataFormatada = String(dataComentario)
+
         
         let comentDic = coment?.dictionaryRepresentation()
         
         self.ref.child("comentarios").childByAutoId().setValue(comentDic)
-
+        
+        trilha?.comentarios = (trilha?.comentarios)! + 1
 
         
     }
+    
+    
 
 
     override func viewDidLoad() {
