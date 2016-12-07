@@ -4,7 +4,7 @@ import Foundation
 
 public class Comentario {
     public var codigo : Int?
-    public var codigoTrilha : Int?
+    public var codigoTrilha : String?
     public var usuarioSocial : UsuarioSocial?
     public var descricao : String?
     public var dataFormatada : String?
@@ -42,7 +42,7 @@ public class Comentario {
     required public init?(dictionary: NSDictionary) {
         
         codigo = dictionary["CODIGO"] as? Int
-        codigoTrilha = dictionary["FKTRILHA"] as? Int
+        codigoTrilha = dictionary["FKTRILHA"] as? String
 //        idUsuario = dictionary["idUsuario"] as? String
 //        if (dictionary["trilha"] != nil) { trilha = Trilha(dictionary: dictionary["trilha"] as! NSDictionary) }
         if (dictionary["usuarioSocial"] != nil) { usuarioSocial = UsuarioSocial(dictionary: dictionary["usuarioSocial"] as! NSDictionary) }

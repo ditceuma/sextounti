@@ -27,12 +27,12 @@ class UsuarioViewController: UIViewController {
         self.uiimvProfilePic.layer.masksToBounds = false
         self.uiimvProfilePic.clipsToBounds = true
         
-        self.uiimvProfilePic.layer.borderWidth = 2.0;
-        self.uiimvProfilePic.layer.borderColor = UIColor.whiteColor().CGColor
+        self.uiimvProfilePic.layer.borderWidth = 1;
+        self.uiimvProfilePic.layer.borderColor = UIColor.blackColor().CGColor
         
         btnLogout.backgroundColor = UIColor.clearColor()
         btnLogout.layer.borderWidth = 1.0
-        btnLogout.layer.borderColor = UIColor.whiteColor().CGColor
+        btnLogout.layer.borderColor = UIColor.blackColor().CGColor
         
         if let user = FIRAuth.auth()?.currentUser {
             let name = user.displayName

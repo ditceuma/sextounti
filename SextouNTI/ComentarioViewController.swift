@@ -90,7 +90,7 @@ class ComentarioViewController: UIViewController, UITableViewDataSource, UITable
                 let comentarioLocal = Comentario()
                 
                 if (comentario["FKTRILHA"]) != nil {
-                    if ((comentario["FKTRILHA"])! as? Int) == self.trilha?.codigo {
+                    if ((comentario["FKTRILHA"])! as? String) == self.trilha?.codigo {
                         comentarioLocal?.codigo =  comentario["CODIGO"] as? Int
                         comentarioLocal?.descricao =  comentario["DESCRICAO"] as? String
                         comentarioLocal?.dataFormatada =  comentario["DATA"] as? String

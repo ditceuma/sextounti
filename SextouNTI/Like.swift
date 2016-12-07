@@ -11,17 +11,15 @@ import Foundation
 
 public class Like {
     
-    var codigo: Int?
-    var codigoTrilha: Int?
     var usuarioSocial: UsuarioSocial?
-    var dataFormatada: String?
+    var curtiu: Bool?
     
     
     /**
      Returns an array of models based on given dictionary.
      
      Sample usage:
-     let Comentario = Comentario.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+     let Like = Like(someDictionaryArrayFromJSON)
      
      - parameter array:  NSArray from JSON dictionary.
      
@@ -41,20 +39,18 @@ public class Like {
      Constructs the object based on the given dictionary.
      
      Sample usage:
-     let Comentario = Comentario(someDictionaryFromJSON)
+     let like = Like(someDictionaryFromJSON)
      
      - parameter dictionary:  NSDictionary from JSON.
      
-     - returns: Comentario Instance.
+     - returns: Like Instance.
      */
     required public init?(dictionary: NSDictionary) {
         
-        codigo = dictionary["CODIGO"] as? Int
-        codigoTrilha = dictionary["FKTRILHA"] as? Int
         //        idUsuario = dictionary["idUsuario"] as? String
         //        if (dictionary["trilha"] != nil) { trilha = Trilha(dictionary: dictionary["trilha"] as! NSDictionary) }
         if (dictionary["usuarioSocial"] != nil) { usuarioSocial = UsuarioSocial(dictionary: dictionary["usuarioSocial"] as! NSDictionary) }
-        dataFormatada = dictionary["DATA"] as? String
+        curtiu = dictionary["curtiu"] as? Bool
     }
     
     required public init?() {
@@ -70,13 +66,8 @@ public class Like {
         
         let dictionary = NSMutableDictionary()
         
-        dictionary.setValue(self.codigo, forKey: "CODIGO")
-        dictionary.setValue(self.codigoTrilha, forKey: "FKTRILHA")
-        //        dictionary.setValue(self.idUsuario, forKey: "idUsuario")
-        
-        //        dictionary.setValue(self.trilha?.dictionaryRepresentation(), forKey: "trilha")
         dictionary.setValue(self.usuarioSocial!.uid, forKey: "FKUSUARIO")
-        dictionary.setValue(self.dataFormatada, forKey: "DATA")
+        dictionary.setValue(self.curtiu, forKey: "curtiu")
         
         return dictionary
     }

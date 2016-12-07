@@ -6,7 +6,7 @@ use_frameworks!
 target 'SextouNTI' do
   pod 'Alamofire', '~> 3.1.2'
   pod 'ObjectMapper', '~> 1.3'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '~> 3.0'
   pod 'Firebase', '>= 2.5.1'
   pod ‘Firebase/Auth’
   pod ‘Google/SignIn’

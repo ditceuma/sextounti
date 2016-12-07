@@ -40,13 +40,15 @@ class DetalheTrilhaViewController: UIViewController {
         let curtidas: Int
         let comentarios: Int
 
+        self.imagemUsuario.layer.borderWidth = 1
+        self.imagemUsuario.layer.borderColor = UIColor.blackColor().CGColor
         self.imagemUsuario.layer.cornerRadius = self.imagemUsuario.frame.size.height/2
         self.imagemUsuario.layer.masksToBounds = false
         self.imagemUsuario.clipsToBounds = true
         
         self.tituloTrilha.text = trilha?.titulo
         self.decricaoTrilha.text = trilha?.sobre
-        self.imagemUsuario.setUrl((trilha!.usuario?.urlImage!)!)
+        self.imagemUsuario.setUrl((trilha!.usuarioSocial?.urlImage!)!)
         
         curtidas = (trilha?.likes)!
         comentarios = (trilha?.comentarios)!
@@ -79,39 +81,50 @@ class DetalheTrilhaViewController: UIViewController {
 
         //print(snapshotLocal!["likes"])
         
-        if let likes = snapshotLocal!["likes"] as? NSDictionary {
-            
-            for (_, like) in likes {
-                
-                if (like.objectForKey("FKTRILHA")! as! NSObject) == trilha?.codigo && (like.objectForKey("FKUSUARIO") as! String) == usuarioLogin.uid {
-                    jaCurtiu = true
-                 }
+        if let trilhas = snapshotLocal!["trilhas"] as? NSDictionary {
+            if let trilha = trilhas.objectForKey((trilha?.codigo!)!) as? NSDictionary {
+                if let likes = trilha.objectForKey("likes") as? NSDictionary {
+                    print(likes)
+                    for like in likes {
+                        
+                        if (like.0) as? String == usuarioLogin.uid {
+                            jaCurtiu = true
+                         }
+                    }
+                }
             }
         }
         
         
         if !jaCurtiu {
             
-            let like = Like()
+            if let codigoTrilha = trilha?.codigo {
             
-            like!.codigoTrilha = trilha?.codigo
-            like!.usuarioSocial = usuarioLogin
+                ref.child("trilhas").child(codigoTrilha).child("likes").child(usuarioLogin.uid!).setValue(true)
+                
+                trilha?.likes = (trilha?.likes)! + 1
+                
+            }
             
-            let likeDic = like?.dictionaryRepresentation()
-            
-            ref.child("likes").childByAutoId().setValue(likeDic)
-            
-            trilha?.likes = (trilha?.likes)! + 1
-            
-            let curtidas = trilha?.likes
-            let comentarios = trilha?.comentarios
-            
-            self.numeroComentariosTrilha.text = "(" + String(curtidas!) + ") curtidas (" + String(comentarios!) + ") comentarios"
+
         }
         else {
             
+            if let codigoTrilha = trilha?.codigo {
+                
+                ref.child("trilhas").child(codigoTrilha).child("likes").child(usuarioLogin.uid!).removeValue()
+                
+                trilha?.likes = (trilha?.likes)! - 1
+
+            }
+            
             
         }
+        
+        let curtidas = trilha?.likes
+        let comentarios = trilha?.comentarios
+        
+        self.numeroComentariosTrilha.text = "(" + String(curtidas!) + ") curtidas (" + String(comentarios!) + ") comentarios"
 
     }
     

@@ -10,8 +10,8 @@ import Foundation
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 public class Trilha {
-    public var codigo : Int?
-    public var usuario : Usuario?
+    public var codigo : String?
+    public var usuarioSocial : UsuarioSocial?
     public var titulo : String?
     public var sobre : String?
     public var dataFormatada: String?
@@ -50,8 +50,8 @@ public class Trilha {
      */
     required public init?(dictionary: NSDictionary) {
         
-        codigo = dictionary["codigo"] as? Int
-        if (dictionary["usuario"] != nil) { usuario = Usuario(dictionary: dictionary["usuario"] as! NSDictionary) }
+        codigo = dictionary["codigo"] as? String
+        if (dictionary["usuarioSocial"] != nil) { usuarioSocial = UsuarioSocial(dictionary: dictionary["usuarioSocial"] as! NSDictionary) }
         titulo = dictionary["titulo"] as? String
         sobre = dictionary["sobre"] as? String
         dataFormatada = dictionary["dataFormatada"] as? String
@@ -74,11 +74,12 @@ public class Trilha {
         let dictionary = NSMutableDictionary()
         
         dictionary.setValue(self.codigo, forKey: "codigo")
-        dictionary.setValue(self.usuario, forKey: "usuario")
+        dictionary.setValue(self.usuarioSocial, forKey: "usuarioSocial")
         dictionary.setValue(self.titulo, forKey: "titulo")
         dictionary.setValue(self.sobre, forKey: "sobre")
         dictionary.setValue(self.likes, forKey: "likes")
         dictionary.setValue(self.comentarios, forKey: "comentarios")
+        dictionary.setValue(self.dataFormatada, forKey: "dataFormatada")
         
         return dictionary
     }

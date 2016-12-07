@@ -46,58 +46,52 @@ class TrilhaTableViewController: UITableViewController {
         
         let fabricaModels = FabricaModels()
         
-        let trilhas = snapshot["trilhas"] as! NSArray
-        
-        
-        
-        for trilha in trilhas {
-            let trilhaLocal = Trilha()
-            var likesCount = 0
-            var comentariosCount = 0
+        if let trilhas = (snapshot["trilhas"]  as? NSDictionary) {
             
-            trilhaLocal?.codigo =  trilha["CODIGO"] as? Int
-            trilhaLocal?.titulo =  trilha["TITULO"] as? String
-            trilhaLocal?.dataFormatada = trilha["DATA_EVENTO"] as? String
-            trilhaLocal?.sobre = trilha["SOBRE"] as? String
-            
-            // Carrega curtidas
-            if let likes = snapshot["likes"] as? NSDictionary {
+            print(snapshot["trilhas"])
+        
+        
+            for (chave , trilha) in trilhas  {
+                let trilhaLocal = Trilha()
+                var likesCount = 0
+                var comentariosCount = 0
                 
-                for (_, like) in likes {
+                trilhaLocal?.codigo =  chave as? String
+                trilhaLocal?.titulo =  trilha["TITULO"] as? String
+                trilhaLocal?.dataFormatada = trilha["DATA_EVENTO"] as? String
+                trilhaLocal?.sobre = trilha["SOBRE"] as? String
+                
+                // Carrega curtidas
+                if let likes = trilha["likes"] as? NSDictionary {
                     
-                    if (like.objectForKey("FKTRILHA")! as! NSObject) == trilhaLocal?.codigo {
-                        likesCount = likesCount + 1
-                    }
-                }
-                trilhaLocal?.likes = likesCount
-                
-            } else {
-                trilhaLocal?.likes = 0
-            }
-            
-            // Carrega Comentarios
-            if let comentarios = snapshot["comentarios"] as? NSDictionary {
-                
-                for (_, comentario) in comentarios {
+                      trilhaLocal?.likes = likes.count
                     
-                    if (comentario.objectForKey("FKTRILHA")! as! NSObject) == trilhaLocal?.codigo {
-                        comentariosCount = comentariosCount + 1
-                    }
+                } else {
+                    trilhaLocal?.likes = 0
                 }
-                trilhaLocal?.comentarios = comentariosCount
                 
-            } else {
-                trilhaLocal?.comentarios = 0
-            }
+                // Carrega Comentarios
+                if let comentarios = snapshot["comentarios"] as? NSDictionary {
+                    
+                    for (_, comentario) in comentarios {
+                        
+                        if (comentario.objectForKey("FKTRILHA")! as! NSObject) == trilhaLocal?.codigo {
+                            comentariosCount = comentariosCount + 1
+                        }
+                    }
+                    trilhaLocal?.comentarios = comentariosCount
+                    
+                } else {
+                    trilhaLocal?.comentarios = 0
+                }
 
-            trilhaLocal?.usuario =  fabricaModels.carregaUsuario(snapshot,  codigo: (trilha["FK_USUARIO"] as? Int)!)      // fabricaModels.retornaUsuarioPorCodigo(trilha["FK_USUARIO"] as! Int)
-            
-            //print(trilhaLocal)
-            
-            self.trilhasArray.append(trilhaLocal!)
-            
+                trilhaLocal?.usuarioSocial =  fabricaModels.carregaUsuario_social(snapshot,  uid: (trilha["FK_USUARIO"] as? String)!)
+                //print(trilhaLocal)
+                
+                self.trilhasArray.append(trilhaLocal!)
+                
+            }
         }
-        
     }
     
     
@@ -138,11 +132,11 @@ class TrilhaTableViewController: UITableViewController {
         // Fetches the appropriate trilha for the data source layout.
         let trilha = trilhasArray[indexPath.row]
         
-        let urlImagem = (trilha.usuario?.urlImage!)!
+        let urlImagem = (trilha.usuarioSocial?.urlImage!)!
         
         cell.tituloTrilhaLabel.text = trilha.titulo
         cell.dataTrilhaLabel.text = trilha.dataFormatada
-        cell.nomeUsuarioLabel.text = trilha.usuario?.nome
+        cell.nomeUsuarioLabel.text = trilha.usuarioSocial?.nome
         cell.photoImageView.setUrl(urlImagem )
         
         cell.photoImageView.layer.cornerRadius = cell.photoImageView.frame.size.height/2
@@ -157,6 +151,12 @@ class TrilhaTableViewController: UITableViewController {
        cell.backgroundColor = cell.contentView.backgroundColor
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        
+    }
 
 
     // MARK: - Navigation
@@ -164,13 +164,15 @@ class TrilhaTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let vc: DetalheTrilhaViewController =  segue.destinationViewController as! DetalheTrilhaViewController
         
-        let path = tableViewTrilhas.indexPathForSelectedRow
-        let trilha = trilhasArray[path!.row]
-        
-        vc.trilha = trilha
-
+        if segue.identifier == "detalheTrilhaSegue" {
+            let vc: DetalheTrilhaViewController =  segue.destinationViewController as! DetalheTrilhaViewController
+            
+            let path = tableViewTrilhas.indexPathForSelectedRow
+            let trilha = trilhasArray[path!.row]
+            
+            vc.trilha = trilha
+        }
         
     }
 

@@ -36,10 +36,14 @@
 		9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */; };
 		9C3165BA1D87BA320026BD08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */; };
 		9C37E4D31D41C09500D1182E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */; };
+		9C425BE31DCFD1120047C9A9 /* CadastroTrilhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C425BE21DCFD1120047C9A9 /* CadastroTrilhaViewController.swift */; };
 		9C4DB7901D33D7DB00D4AB81 /* rightarrowwite25x25.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */; };
 		9C7707AC1D9309EF0017FB91 /* DownLoadImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7707AB1D9309EF0017FB91 /* DownLoadImageView.swift */; };
 		9C7707B01D931B960017FB91 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7707AF1D931B960017FB91 /* StringUtils.swift */; };
 		9C7707B21D932ADF0017FB91 /* FabricaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7707B11D932ADF0017FB91 /* FabricaModels.swift */; };
+		9C7DC68A1DDBAD6A00A82DFD /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DC6891DDBAD6A00A82DFD /* ChannelListViewController.swift */; };
+		9C7DC68C1DDBB8AE00A82DFD /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DC68B1DDBB8AE00A82DFD /* Channel.swift */; };
+		9C7DC68E1DDBD0A500A82DFD /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DC68D1DDBD0A500A82DFD /* CreateChannelCell.swift */; };
 		9C7DF6371D9733A200D38515 /* UsuarioSocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7DF6361D9733A200D38515 /* UsuarioSocial.swift */; };
 		9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9740F91D50467C00D01F70 /* UtilImagem.swift */; };
 		9CD0A4C91D32C994005806D1 /* nophoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CD0A4C81D32C994005806D1 /* nophoto.jpg */; };
@@ -94,10 +98,14 @@
 		9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentarioViewController.swift; sourceTree = "<group>"; };
 		9C3165B91D87BA320026BD08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
+		9C425BE21DCFD1120047C9A9 /* CadastroTrilhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroTrilhaViewController.swift; sourceTree = "<group>"; };
 		9C4DB78F1D33D7DB00D4AB81 /* rightarrowwite25x25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rightarrowwite25x25.png; path = SextouNTI/rightarrowwite25x25.png; sourceTree = "<group>"; };
 		9C7707AB1D9309EF0017FB91 /* DownLoadImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadImageView.swift; sourceTree = "<group>"; };
 		9C7707AF1D931B960017FB91 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		9C7707B11D932ADF0017FB91 /* FabricaModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabricaModels.swift; sourceTree = "<group>"; };
+		9C7DC6891DDBAD6A00A82DFD /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelListViewController.swift; sourceTree = "<group>"; };
+		9C7DC68B1DDBB8AE00A82DFD /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		9C7DC68D1DDBD0A500A82DFD /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChannelCell.swift; sourceTree = "<group>"; };
 		9C7DF6361D9733A200D38515 /* UsuarioSocial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsuarioSocial.swift; sourceTree = "<group>"; };
 		9C9740F91D50467C00D01F70 /* UtilImagem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilImagem.swift; sourceTree = "<group>"; };
 		9CD0A4C81D32C994005806D1 /* nophoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nophoto.jpg; path = SextouNTI/nophoto.jpg; sourceTree = "<group>"; };
@@ -166,7 +174,6 @@
 			children = (
 				484D105C1CEFC20900E129D6 /* Interactor */,
 				484D105A1CEFC05300E129D6 /* View */,
-				484D10591CEFC04B00E129D6 /* Controllers */,
 				1F9F72311CE93F1D0010CF96 /* Util */,
 				1F96EEFF1CD7A18600216741 /* Model */,
 				1F96EEDF1CD79EF400216741 /* AppDelegate.swift */,
@@ -189,6 +196,7 @@
 		1F96EEFF1CD7A18600216741 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C7DC68B1DDBB8AE00A82DFD /* Channel.swift */,
 				1F96EF001CD7A28400216741 /* Comentario.swift */,
 				1F96EF031CD7A57D00216741 /* Trilha.swift */,
 				1F96EF061CD7A68300216741 /* Usuario.swift */,
@@ -225,12 +233,13 @@
 		484D10591CEFC04B00E129D6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				484D105B1CEFC1CF00E129D6 /* Cells */,
 				1F348C461CEA10F000BDE0A9 /* TrilhaTableViewController.swift */,
 				1F96EEE11CD79EF400216741 /* LoginViewController.swift */,
 				1F143E601D012F97007B7C46 /* DetalheTrilhaViewController.swift */,
 				1F45D15E1CEB57DF0035B58E /* UsuarioViewController.swift */,
 				9C21A6041D40593800AA7F2E /* ComentarioViewController.swift */,
+				9C425BE21DCFD1120047C9A9 /* CadastroTrilhaViewController.swift */,
+				9C7DC6891DDBAD6A00A82DFD /* ChannelListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -238,6 +247,8 @@
 		484D105A1CEFC05300E129D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				484D105B1CEFC1CF00E129D6 /* Cells */,
+				484D10591CEFC04B00E129D6 /* Controllers */,
 				1F96EEE81CD79EF400216741 /* LaunchScreen.storyboard */,
 				1F96EEE31CD79EF400216741 /* Main.storyboard */,
 			);
@@ -249,6 +260,7 @@
 			children = (
 				1F348C441CEA039A00BDE0A9 /* TrilhaTableViewCell.swift */,
 				9C37E4D21D41C09500D1182E /* ComentTableViewCell.swift */,
+				9C7DC68D1DDBD0A500A82DFD /* CreateChannelCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -449,8 +461,10 @@
 				9C7DF6371D9733A200D38515 /* UsuarioSocial.swift in Sources */,
 				9C7707AC1D9309EF0017FB91 /* DownLoadImageView.swift in Sources */,
 				1F96EF011CD7A28400216741 /* Comentario.swift in Sources */,
+				9C7DC68A1DDBAD6A00A82DFD /* ChannelListViewController.swift in Sources */,
 				1F96EEE21CD79EF400216741 /* LoginViewController.swift in Sources */,
 				484D10601CEFCE3000E129D6 /* Alerta.swift in Sources */,
+				9C425BE31DCFD1120047C9A9 /* CadastroTrilhaViewController.swift in Sources */,
 				9C9740FA1D50467C00D01F70 /* UtilImagem.swift in Sources */,
 				9C0C408F1D9AFC93001219B9 /* Like.swift in Sources */,
 				9C148B541D52353F00C9A73E /* Reachability.swift in Sources */,
@@ -458,8 +472,10 @@
 				9C21A6051D40593800AA7F2E /* ComentarioViewController.swift in Sources */,
 				9C7707B21D932ADF0017FB91 /* FabricaModels.swift in Sources */,
 				1F348C451CEA039A00BDE0A9 /* TrilhaTableViewCell.swift in Sources */,
+				9C7DC68C1DDBB8AE00A82DFD /* Channel.swift in Sources */,
 				1F96EEE01CD79EF400216741 /* AppDelegate.swift in Sources */,
 				1F143E611D012F97007B7C46 /* DetalheTrilhaViewController.swift in Sources */,
+				9C7DC68E1DDBD0A500A82DFD /* CreateChannelCell.swift in Sources */,
 				1F18998D1CD8462E00A12A4B /* Perfil.swift in Sources */,
 				1F96EF071CD7A68300216741 /* Usuario.swift in Sources */,
 				1F45D15F1CEB57DF0035B58E /* UsuarioViewController.swift in Sources */,
@@ -601,6 +617,9 @@
 			baseConfigurationReference = 04394DC5BF141A88A2AD953C /* Pods-SextouNTI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
@@ -613,6 +632,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fagutapp.SextouNTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/SextouNTI-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -623,6 +643,9 @@
 			baseConfigurationReference = 787697839C5334AC4B7B6183 /* Pods-SextouNTI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
@@ -635,6 +658,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fagutapp.SextouNTI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/SextouNTI-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
